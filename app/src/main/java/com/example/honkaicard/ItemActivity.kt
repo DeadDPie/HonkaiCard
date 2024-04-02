@@ -1,11 +1,14 @@
 package com.example.honkaicard
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class ItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,11 +21,44 @@ class ItemActivity : AppCompatActivity() {
             insets
         }
 
-        val title: TextView = findViewById(R.id.item_list_title_one)
-        val text: TextView = findViewById(R.id.item_list_text)
+        val title: TextView = findViewById(R.id.charName)
+        //val text: TextView = findViewById(R.id.charRare)
+        val rare: TextView = findViewById(R.id.charRare)
+        val desc: TextView = findViewById(R.id.desc)
+        val typeOfDamage: TextView = findViewById(R.id.charTypeOfDamage)
+       // val image: ImageView = findViewById(R.id.imageChar)
+
+// Получение ключа из Intent
+       // val itemKey = intent.getStringExtra("itemKey")
+
+        // Определение изображения на основе ключа
+        //val imageView: ImageView = findViewById(R.id.imageChar)
+        //val imageId = resources.getIdentifier(itemKey, "drawable", packageName)
+        //imageView.setImageResource(imageId)
+        val imageView: ImageView = findViewById(R.id.imageChar)
+        val imageId = intent.getIntExtra("imageId", 0)
+        imageView.setImageResource(imageId)
 
         title.text = intent.getStringExtra("itemTitle")
-        text.text = intent.getStringExtra("itemText")
+        rare.text = intent.getStringExtra("itemRare")
+        desc.text = intent.getStringExtra("itemDesc")
+        typeOfDamage.text = intent.getStringExtra("itemTypeOfDamage")
+
+
+
+        val itemsListPicturesHor: RecyclerView = findViewById(R.id.recyclerView)
+        val items2 = arrayListOf<Relic>()
+        items2.add(Relic(1, "relic", "title"))
+        items2.add(Relic(1, "relic", "title"))
+        items2.add(Relic(1, "relic", "title"))
+        items2.add(Relic(1, "relic", "title"))
+
+
+// Устанавливаем менеджер компоновки для горизонтального расположения элементов
+        itemsListPicturesHor.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+// Создаем адаптер, передавая список идентификаторов ресурсов изображений
+        itemsListPicturesHor.adapter = RecycleHorAdapter(items2, this)
 
     }
 }

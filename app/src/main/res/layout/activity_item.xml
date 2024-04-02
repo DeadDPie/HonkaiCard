@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="20dp"
     tools:context=".ItemActivity">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
     <Button
-        android:id="@+id/button_b"
+        android:id="@+id/button_fav"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Buy" />
+        android:text="В избранное" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageChar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="550dp"
         app:srcCompat="@drawable/kit" />
 
     <TextView
-        android:id="@+id/item_list_title_one"
+        android:id="@+id/charName"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
         android:layout_width="match_parent"
@@ -32,40 +37,51 @@
         android:text="Имя" />
 
     <TextView
-        android:id="@+id/item_list_text"
+        android:id="@+id/charRare"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
+
         android:text="Рейтинг" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/charTypeOgDamageTitle"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Стихия" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/charTypeOfDamage"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Вид стихии" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/TitlePath"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Путь" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/charPath"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Название пути" />
 
     <TextView
         android:id="@+id/textView5"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
@@ -73,25 +89,29 @@
         android:text="Описание" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/desc"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/textView8"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="30sp"
         android:text="Оружие" />
-
-    <TextView
-        android:id="@+id/textView7"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:text="Артефакты" />
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </LinearLayout>
+</ScrollView >

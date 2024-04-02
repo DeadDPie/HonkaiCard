@@ -15,8 +15,7 @@ class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Ad
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view){
         val image: ImageView = view.findViewById(R.id.item_list_image)
         val title: TextView = view.findViewById(R.id.item_list_title)
-        val desc: TextView = view.findViewById(R.id.item_list_desc)
-        val price: TextView = view.findViewById(R.id.item_list_price)
+        //val desc: TextView = view.findViewById(R.id.item_list_desc)
 
         val btn: Button = view.findViewById(R.id.item_list_button)
 
@@ -33,8 +32,8 @@ class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Ad
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.title.text = items[position].title
-        holder.desc.text = items[position].desc
-        holder.price.text = items[position].price.toString()
+        //holder.desc.text = items[position].desc
+
 
         val imageId = context.resources.getIdentifier(items[position].image,
            "drawable",
@@ -44,8 +43,21 @@ class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Ad
         holder.btn.setOnClickListener {
             val intent = Intent(context, ItemActivity::class.java)
 
+            //intent.putExtra("itemImage", items[position].image)
+
+            // Передача уникального ключа вместо имени файла изображения
+            //intent.putExtra("itemKey", items[position].id)
+            //intent.putExtra("imageResourceId", R.drawable.)
+            intent.putExtra("imageId", imageId)
+
+
             intent.putExtra("itemTitle", items[position].title)
             intent.putExtra("itemText", items[position].text)
+            intent.putExtra("itemRelics", items[position].relics)
+            intent.putExtra("itemTypeOfDamage", items[position].typeOfDamage)
+            intent.putExtra("itemRare", items[position].rare)
+            intent.putExtra("itemDesc", items[position].desc)
+
 
             context.startActivity(intent)
         }

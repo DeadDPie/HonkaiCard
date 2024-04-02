@@ -10,9 +10,9 @@
     <ImageView
         android:id="@+id/item_list_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/kit" />
+        android:layout_height="200dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/natasha" />
 
     <TextView
         android:id="@+id/item_list_title"
@@ -24,25 +24,8 @@
         android:textSize="30sp"
         android:text="TextView" />
 
-    <TextView
-        android:id="@+id/item_list_desc"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="TextView" />
 
-    <TextView
-        android:id="@+id/item_list_price"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:gravity="end"
-        android:text="TextView" />
+
 
     <Button
         android:id="@+id/item_list_button"

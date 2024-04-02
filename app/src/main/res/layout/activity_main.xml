@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Персонажи хонкай"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,12 +21,12 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Избранное" />
 
     <Button
         android:id="@+id/button_go"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GO" />
+        android:text="Посмотреть все" />
 
 </LinearLayout>
