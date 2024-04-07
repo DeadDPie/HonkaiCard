@@ -33,7 +33,7 @@ class MainActivity2 : AppCompatActivity() {
 
 
         items.add(Item(1, "gepard", "Гепард","Divan", "meme", "rare1",
-            Path(7,"aauti", "aaa"), "relics1", "typeOfDamage1"))
+            Path(5,"aauti", "aaa"), "relics1", "typeOfDamage1"))
         items.add(Item(2, "natasha", "Наташа","На лице придирчивого доктора всегда играет хитрая улыбка.\n" +
                 "В Подземье, где всегда не хватает медикаментов, Наташа — одна из немногих, к кому люди могут обратиться за помощью.",
             "df","4", path2, "relics12", "Физический"  ))

@@ -43,8 +43,8 @@ class ItemActivity : AppCompatActivity() {
         val pathText: TextView = findViewById(R.id.charPath)
         val textp = db.getPath(8)
 
-// intent.getStringExtra("Ppath")
-        pathText.text =textp
+// intent.getStringExtra("Ppath") textp
+        pathText.text =intent.getStringExtra("Ppath")
         title.text = intent.getStringExtra("itemTitle")
         rare.text = intent.getStringExtra("itemRare")
         desc.text = intent.getStringExtra("itemDesc")

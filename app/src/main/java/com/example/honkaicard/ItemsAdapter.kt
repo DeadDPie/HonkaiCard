@@ -49,7 +49,7 @@ class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Ad
             //intent.putExtra("itemKey", items[position].id)
             //intent.putExtra("imageResourceId", R.drawable.)
             intent.putExtra("imageId", imageId)
-            //intent.putExtra("Ppath", items[position].path.name)
+            intent.putExtra("Ppath", items[position].path.name)
 
 
             intent.putExtra("itemTitle", items[position].title)
