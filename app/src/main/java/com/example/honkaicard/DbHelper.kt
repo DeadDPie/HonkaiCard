@@ -27,13 +27,14 @@ SQLiteOpenHelper(context, "app", factory, 2){
 
         db.close()
     }
-    fun getPath(): String {
+    fun getPath(id:Int): String {
 
         val db = this.readableDatabase
 /*
         val result = db.rawQuery("SELECT paths.name FROM paths", null)*//*WHERE paths.id = 3*/
-//return result.moveToFirst()
-        val cursor = db.rawQuery("SELECT paths.name FROM paths WHERE paths.id = 5 ", null)
+//return result.moveToFirst()WHERE paths.id = $Pid
+        //val cursor = db.rawQuery("SELECT paths.name FROM paths  ", null)
+        val cursor = db.rawQuery("SELECT name FROM paths WHERE id = ?", arrayOf(id.toString()))
         val result: MutableList<String> = mutableListOf()
 
         if (cursor.moveToFirst()) {
