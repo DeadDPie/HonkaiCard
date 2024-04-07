@@ -39,6 +39,12 @@ class ItemActivity : AppCompatActivity() {
         val imageId = intent.getIntExtra("imageId", 0)
         imageView.setImageResource(imageId)
 
+        val db = DbHelper(this, null)
+        val pathText: TextView = findViewById(R.id.charPath)
+        val textp = db.getPath()
+
+
+        pathText.text = textp
         title.text = intent.getStringExtra("itemTitle")
         rare.text = intent.getStringExtra("itemRare")
         desc.text = intent.getStringExtra("itemDesc")

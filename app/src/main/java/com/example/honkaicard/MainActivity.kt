@@ -3,6 +3,7 @@ package com.example.honkaicard
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,11 +21,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val button: Button = findViewById(R.id.button)
-        button.setOnClickListener{
-            val path = Path("PathName", "PathDesc")
+        button.setOnClickListener{/*
+
+            val path = Path("itsnewpath", "PathDesc")
             val db = DbHelper(this, null)
+            //db.del("app")
             db.addPath(path)
-            Toast.makeText(this, "Path was added", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Path was added", Toast.LENGTH_LONG).show()*/
+
 
         }
 
@@ -33,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }
+
 
     }
 }

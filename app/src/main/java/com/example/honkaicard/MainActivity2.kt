@@ -21,17 +21,17 @@ class MainActivity2 : AppCompatActivity() {
             insets
         }
 
-        val path = Path("PathName", "PathDesc")
-        val path2 = Path(" Изобилие", "PathDesc")
+        //val path = Path("PathName", "PathDesc")
+        val path2 = Path(5,"Puti", "PathrtryDesc")
         val db = DbHelper(this, null)
-        db.addPath(path)
+        db.addPath(path2)
         Toast.makeText(this, "Path was added", Toast.LENGTH_LONG).show()
 
         val itemsList: RecyclerView = findViewById(R.id.itemsList)
         val items = arrayListOf<Item>()
 
 
-        items.add(Item(1, "gepard", "Гепард","Divan", "meme", "rare1", path, "relics1", "typeOfDamage1"))
+        items.add(Item(1, "gepard", "Гепард","Divan", "meme", "rare1", path2, "relics1", "typeOfDamage1"))
         items.add(Item(2, "natasha", "Наташа","На лице придирчивого доктора всегда играет хитрая улыбка.\n" +
                 "В Подземье, где всегда не хватает медикаментов, Наташа — одна из немногих, к кому люди могут обратиться за помощью.",
             "df","4", path2, "relics12", "Физический"  ))
