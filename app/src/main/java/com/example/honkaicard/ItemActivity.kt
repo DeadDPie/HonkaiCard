@@ -42,9 +42,13 @@ class ItemActivity : AppCompatActivity() {
         val db = DbHelper(this, null)
         val pathText: TextView = findViewById(R.id.charPath)
         val textp = db.getPath(8)
+        val pathId: Int = intent.getIntExtra("Ppath", 3)
+        val path: Path = db.getPathById(pathId)
 
 // intent.getStringExtra("Ppath") textp
-        pathText.text =intent.getStringExtra("Ppath")
+
+        //pathText.text = intent.getStringExtra("Ppath")
+        pathText.text = path.name
         name.text = intent.getStringExtra("itemTitle")
         rare.text = intent.getStringExtra("itemRare")
         desc.text = intent.getStringExtra("itemDesc")

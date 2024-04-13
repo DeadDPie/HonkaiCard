@@ -2,7 +2,6 @@ package com.example.honkaicard
 
 import android.content.Context
 import android.content.Intent
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +41,7 @@ class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Ad
 
         holder.btn.setOnClickListener {
             val intent = Intent(context, ItemActivity::class.java)
+            //val db = DbHelper(this, null)
 
             //intent.putExtra("itemImage", items[position].image)
 
@@ -49,8 +49,9 @@ class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Ad
             //intent.putExtra("itemKey", items[position].id)
             //intent.putExtra("imageResourceId", R.drawable.)
             intent.putExtra("imageId", imageId)
-            intent.putExtra("Ppath", items[position].path.name)
-
+            //intent.putExtra("Ppath", items[position].path.name)
+            intent.putExtra("Ppath", items[position].path)
+            //DbHelper.getP
 
             intent.putExtra("itemTitle", items[position].name)
             intent.putExtra("itemRelics", items[position].relics)

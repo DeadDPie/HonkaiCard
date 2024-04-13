@@ -3,7 +3,6 @@ package com.example.honkaicard
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             val db = DbHelper(this, null)
             //db.del("app")
             db.addPath(path)
-            Toast.makeText(this, "Path was added", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
 
 
         }

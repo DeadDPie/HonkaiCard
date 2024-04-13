@@ -1,8 +1,6 @@
 package com.example.honkaicard
-import android.content.ClipDescription
 import android.content.ContentValues
 import android.content.Context;
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 class DbHelper (val context: Context, val factory:SQLiteDatabase.CursorFactory?):
@@ -86,7 +84,7 @@ SQLiteOpenHelper(context, "app", factory, 2){
         values.put("title", item.name)
         values.put("description", item.desc)
         values.put("rare", item.rare)
-        values.put("path_id", item.path.id)
+        values.put("path_id", item.path)
         values.put("relics", item.relics)
         values.put("typeOfDamage", item.typeOfDamage)
 
@@ -110,7 +108,7 @@ SQLiteOpenHelper(context, "app", factory, 2){
 
             val path = getPathById(pathId)
 
-            val char = Item(id, image, name, description, rare, path, relics, typeOfDamage)
+            val char = Item(id, image, name, description, rare, pathId, relics, typeOfDamage)
             chars.add(char)
         }
 

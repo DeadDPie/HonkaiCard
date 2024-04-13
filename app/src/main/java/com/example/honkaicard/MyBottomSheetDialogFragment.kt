@@ -12,7 +12,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 
-
 class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
@@ -20,38 +19,40 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+/*
         ViewCompat.setOnApplyWindowInsetsListener(view.findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
+        }*/
 
         val button4: Button = view.findViewById(R.id.filterRare4)
 
         button4.setOnClickListener {
             val intent = Intent(requireContext(), MainActivity2::class.java)
 
-            intent.putExtra("Filter", '4')
+            intent.putExtra("Filter", "4")
 
-            startActivity(intent)
+            //startActivity(intent)
+            requireContext().startActivity(intent)
         }
         val button5: Button = view.findViewById(R.id.filterRare5)
 
         button5.setOnClickListener {
             val intent = Intent(requireContext(), MainActivity2::class.java)
 
-            intent.putExtra("Filter", '5')
+            intent.putExtra("Filter", "5")
 
-            startActivity(intent)
+            requireContext().startActivity(intent)
         }
         val buttonP: Button = view.findViewById(R.id.filterPath)
 
         buttonP.setOnClickListener {
             val intent = Intent(requireContext(), MainActivity2::class.java)
 
-            intent.putExtra("Filter", 'P')
+            intent.putExtra("Filter", "P")
 
-            startActivity(intent)
+            requireContext().startActivity(intent)
         }
     }
 }
