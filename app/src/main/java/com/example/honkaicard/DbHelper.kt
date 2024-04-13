@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 class DbHelper (val context: Context, val factory:SQLiteDatabase.CursorFactory?):
-SQLiteOpenHelper(context, "app", factory, 2){
+SQLiteOpenHelper(context, "app", factory, 5){
     override fun onCreate(db: SQLiteDatabase?) {
         val createPathsTableQuery  = "CREATE TABLE paths (id INT PRIMARY KEY, name TEXT, description TEXT)"
         db!!.execSQL(createPathsTableQuery )
@@ -21,13 +21,22 @@ SQLiteOpenHelper(context, "app", factory, 2){
                 "relics TEXT, " +
                 "typeOfDamage TEXT, " +
                 "FOREIGN KEY(path_id) REFERENCES paths(id))"
-        db?.execSQL(createItemsTableQuery)
+
+        // Проверяем, существует ли уже таблица items
+        val query = "SELECT DISTINCT tbl_name FROM sqlite_master WHERE tbl_name = 'items'"
+        val cursor = db.rawQuery(query, null)
+        if (cursor.count <= 0) {
+        db.execSQL(createItemsTableQuery)
+        }
+        cursor.close()
 
     }
 //
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
     db!!.execSQL("DROP TABLE IF EXISTS paths")
         onCreate(db)
+    db!!.execSQL("DROP TABLE IF EXISTS items")
+    onCreate(db)
     }
 
     fun addPath(path:Path){

@@ -25,7 +25,7 @@ class MainActivity2 : AppCompatActivity() {
         val db = DbHelper(this, null)
         db.addPath(path)
         Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
-        val pith: Path = db.getPathById(3)!!
+        //val pith: Path = db.getPathById(3)!!
 
         val itemsList: RecyclerView = findViewById(R.id.itemsList)
         val items = arrayListOf<Item>()
@@ -45,6 +45,7 @@ class MainActivity2 : AppCompatActivity() {
         val pathNonexistence = Path(5, "Небытие", "Персонажи этого Пути будут ослаблять своих врагов и получать преимущество, уменьшая общую боевую мощь врага.")
         val pathPreservation = Path(7, "Сохранение", "Персонажи этого Пути обладают мощными защитными способностями, которые могут защитить союзников разными способами.")
         val pathAbundance = Path(8, "Изобилие", "Персонажи пути Изобилия выполняют роль лекарей в группе и могут исцелить как себя, так и всю команду.")
+
         db.addPath(pathAbundance)
         db.addPath(pathPreservation)
         db.addPath(pathNonexistence)
@@ -61,7 +62,7 @@ class MainActivity2 : AppCompatActivity() {
                 "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
                 "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
             "4",
-            pith.id, "relics1", typeOfDamageIce))
+            pathHarmony.id, "relics1", typeOfDamageIce))
         db.addItem(Item(2, "natasha", "Наташа","На лице придирчивого доктора всегда играет хитрая улыбка.\n" +
                 "В Подземье, где всегда не хватает медикаментов, Наташа — одна из немногих, к кому люди могут обратиться за помощью.",
             "4", pathAbundance.id, "relics12", typeOfDamageFiz  ))
@@ -86,7 +87,11 @@ class MainActivity2 : AppCompatActivity() {
             "5", pathDestruction.id, "relics12", typeOfDamageWind ))
 
 
-
+        val chars = db.getCharByRare("4").toMutableList()
+        for (char in chars) {
+            items.add(char)
+            Toast.makeText(this, "char was added", Toast.LENGTH_SHORT).show()
+        }
 
         /*val filter = intent.getStringExtra("Filter")
         Toast.makeText(this, "Filter $filter", Toast.LENGTH_LONG).show()

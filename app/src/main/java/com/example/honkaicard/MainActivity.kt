@@ -26,6 +26,11 @@ class MainActivity : AppCompatActivity() {
             val db = DbHelper(this, null)
             //db.del("app")
             db.addPath(path)
+            db.addItem(Item(1, "gepard", "Гепард","Честный и благородный командующий Среброгривых Стражей носит имя уважаемой семьи Ландау.\n" +
+                    "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
+                    "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
+                "4",
+                2, "relics1", "dfdfg"))
             Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
 
 
