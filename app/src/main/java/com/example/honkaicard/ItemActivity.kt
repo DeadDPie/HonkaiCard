@@ -21,7 +21,7 @@ class ItemActivity : AppCompatActivity() {
             insets
         }
 
-        val title: TextView = findViewById(R.id.charName)
+        val name: TextView = findViewById(R.id.charName)
         //val text: TextView = findViewById(R.id.charRare)
         val rare: TextView = findViewById(R.id.charRare)
         val desc: TextView = findViewById(R.id.desc)
@@ -45,7 +45,7 @@ class ItemActivity : AppCompatActivity() {
 
 // intent.getStringExtra("Ppath") textp
         pathText.text =intent.getStringExtra("Ppath")
-        title.text = intent.getStringExtra("itemTitle")
+        name.text = intent.getStringExtra("itemTitle")
         rare.text = intent.getStringExtra("itemRare")
         desc.text = intent.getStringExtra("itemDesc")
         typeOfDamage.text = intent.getStringExtra("itemTypeOfDamage")

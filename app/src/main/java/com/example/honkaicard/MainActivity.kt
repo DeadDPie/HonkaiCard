@@ -21,13 +21,13 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val button: Button = findViewById(R.id.button)
-        button.setOnClickListener{/*
+        button.setOnClickListener{
 
-            val path = Path("itsnewpath", "PathDesc")
+            val path = Path(5,"itsnewpath", "PathDesc")
             val db = DbHelper(this, null)
             //db.del("app")
             db.addPath(path)
-            Toast.makeText(this, "Path was added", Toast.LENGTH_LONG).show()*/
+            Toast.makeText(this, "Path was added", Toast.LENGTH_LONG).show()
 
 
         }

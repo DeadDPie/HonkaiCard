@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Adapter<ItemsAdapter.MyViewHolder>() {
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view){
         val image: ImageView = view.findViewById(R.id.item_list_image)
-        val title: TextView = view.findViewById(R.id.item_list_title)
+        val name: TextView = view.findViewById(R.id.item_list_title)
         //val desc: TextView = view.findViewById(R.id.item_list_desc)
 
         val btn: Button = view.findViewById(R.id.item_list_button)
@@ -31,7 +31,7 @@ class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.title.text = items[position].title
+        holder.name.text = items[position].name
         //holder.desc.text = items[position].desc
 
 
@@ -52,8 +52,7 @@ class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Ad
             intent.putExtra("Ppath", items[position].path.name)
 
 
-            intent.putExtra("itemTitle", items[position].title)
-            intent.putExtra("itemText", items[position].text)
+            intent.putExtra("itemTitle", items[position].name)
             intent.putExtra("itemRelics", items[position].relics)
             intent.putExtra("itemTypeOfDamage", items[position].typeOfDamage)
             intent.putExtra("itemRare", items[position].rare)
