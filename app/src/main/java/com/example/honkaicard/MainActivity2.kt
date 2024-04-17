@@ -10,7 +10,20 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity2 : AppCompatActivity() {
+class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
+    private var buttonText: String = ""
+
+    override fun onButtonFourClicked(text: String) {
+        //recreate()
+        // Делайте что-то с полученной строкой
+        buttonText = text
+        recreate()
+        //Toast.makeText(this, "Нажата кнопка: $text", Toast.LENGTH_SHORT).show()
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("buttonText", buttonText)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,11 +33,16 @@ class MainActivity2 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        //if (buttonText.isNotEmpty()) {
+            //Toast.makeText(this, "Нажата кнопка: $buttonText", Toast.LENGTH_SHORT).show()
+            // Другие действия с использованием buttonText...
+        //}
+
 
         val path = Path(8,"Putii", "PathrtryDesc")
         val db = DbHelper(this, null)
         db.addPath(path)
-        Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
         //val pith: Path = db.getPathById(3)!!
 
         val itemsList: RecyclerView = findViewById(R.id.itemsList)
@@ -106,11 +124,79 @@ class MainActivity2 : AppCompatActivity() {
                 "4",
                 pith.id, "relics1", typeOfDamageIce))
         }*/
+        items.add(Item(1, "gepard", "Гепард","Честный и благородный командующий Среброгривых Стражей носит имя уважаемой семьи Ландау.\n" +
+                "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
+                "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
+            "4",
+            pathAbundance.id, "relics1", typeOfDamageIce))
+        items.add(Item(2, "natasha", "Наташа","На лице придирчивого доктора всегда играет хитрая улыбка.\n" +
+                "В Подземье, где всегда не хватает медикаментов, Наташа — одна из немногих, к кому люди могут обратиться за помощью.",
+            "4", pathAbundance.id, "relics12", typeOfDamageFiz  ))
 
+
+        items.add(Item(4, "march", "Март 7","Энергичная и эксцентричная девушка, интересующаяся всем, что нравится девочкам её возраста, к примеру, фотографией.\n" +
+                "Её обнаружили в глыбе дрейфующего вечного льда, а после пробуждения оказалось, что она ничего не знает ни о себе, ни о своём прошлом.\n" +
+                "Поначалу сильно этим подавленная, она решила назвать себя в честь даты, с которой пошла её новая жизнь.\n" +
+                "И так появилась Март 7.",
+            "4", pathPreservation.id, "relics12", typeOfDamageIce ))
+        items.add(Item(5, "chinlu", "Цзинлю","Легендарная героиня из Заоблачного квинтета, получившая прозвище Непостижимая Зарница.\n" +
+                "Отринув привычные людские представления об исходе битвы, она выбрала другой путь, чтобы обрести силу, способную уничтожать богов.",
+            "5", pathDestruction.id, "relics12", typeOfDamageIce ))
+        items.add(Item(5, "blade", "Блэйд","Мечник, всецело отдавший себя клинку. Данное при рождении имя неизвестно.\n" +
+                "Он поклялся в верности Рабу Судьбы и обрёл невиданные способности к самоисцелению.\n" +
+                "Блэйд орудует старинным мечом, который покрыт трещинами точно так же, как тело и разум его владельца.",
+            "5", pathDestruction.id, "relics12", typeOfDamageWind ))
         items.add(Item(3, "yan", "Яньцин","Энергичный лейтенант Лофу Сяньчжоу, а также самый умелый из мечников.\n" +
                 "Он с рождения одержим мечами. Когда меч ложится в его в руку, никто не смеет недооценивать этого молодого гения.\n" +
                 "Пожалуй, лишь время способно притупить его драгоценный клинок..",
             "5", pathHunt.id, "relics12", typeOfDamageIce ))
+        if (savedInstanceState != null) {
+            buttonText = savedInstanceState.getString("buttonText").toString()
+        }
+if (buttonText == "4"){
+    items.clear()
+    items.add(Item(1, "gepard", "Гепард","Честный и благородный командующий Среброгривых Стражей носит имя уважаемой семьи Ландау.\n" +
+            "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
+            "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
+        "4",
+        pathAbundance.id, "relics1", typeOfDamageIce))
+    items.add(Item(2, "natasha", "Наташа","На лице придирчивого доктора всегда играет хитрая улыбка.\n" +
+            "В Подземье, где всегда не хватает медикаментов, Наташа — одна из немногих, к кому люди могут обратиться за помощью.",
+        "4", pathAbundance.id, "relics12", typeOfDamageFiz  ))
+
+
+    items.add(Item(4, "march", "Март 7","Энергичная и эксцентричная девушка, интересующаяся всем, что нравится девочкам её возраста, к примеру, фотографией.\n" +
+            "Её обнаружили в глыбе дрейфующего вечного льда, а после пробуждения оказалось, что она ничего не знает ни о себе, ни о своём прошлом.\n" +
+            "Поначалу сильно этим подавленная, она решила назвать себя в честь даты, с которой пошла её новая жизнь.\n" +
+            "И так появилась Март 7.",
+        "4", pathPreservation.id, "relics12", typeOfDamageIce ))
+
+
+}
+        if (buttonText == "5"){
+            items.clear()
+            items.add(Item(5, "chinlu", "Цзинлю","Легендарная героиня из Заоблачного квинтета, получившая прозвище Непостижимая Зарница.\n" +
+                    "Отринув привычные людские представления об исходе битвы, она выбрала другой путь, чтобы обрести силу, способную уничтожать богов.",
+                "5", pathDestruction.id, "relics12", typeOfDamageIce ))
+            items.add(Item(5, "blade", "Блэйд","Мечник, всецело отдавший себя клинку. Данное при рождении имя неизвестно.\n" +
+                    "Он поклялся в верности Рабу Судьбы и обрёл невиданные способности к самоисцелению.\n" +
+                    "Блэйд орудует старинным мечом, который покрыт трещинами точно так же, как тело и разум его владельца.",
+                "5", pathDestruction.id, "relics12", typeOfDamageWind ))
+            items.add(Item(3, "yan", "Яньцин","Энергичный лейтенант Лофу Сяньчжоу, а также самый умелый из мечников.\n" +
+                    "Он с рождения одержим мечами. Когда меч ложится в его в руку, никто не смеет недооценивать этого молодого гения.\n" +
+                    "Пожалуй, лишь время способно притупить его драгоценный клинок..",
+                "5", pathHunt.id, "relics12", typeOfDamageIce ))
+        }
+        /*
+        buttonText.let {
+            Toast.makeText(this, "Нажата кнопка: $buttonText", Toast.LENGTH_SHORT).show()
+        }*/
+        /*
+
+        items.add(Item(3, "yan", "Яньцин","Энергичный лейтенант Лофу Сяньчжоу, а также самый умелый из мечников.\n" +
+                "Он с рождения одержим мечами. Когда меч ложится в его в руку, никто не смеет недооценивать этого молодого гения.\n" +
+                "Пожалуй, лишь время способно притупить его драгоценный клинок..",
+            "5", pathHunt.id, "relics12", typeOfDamageIce ))*/
 
         itemsList.layoutManager = LinearLayoutManager(this)
         itemsList.adapter = ItemsAdapter(items, this)
@@ -134,6 +220,7 @@ class MainActivity2 : AppCompatActivity() {
             val bottomSheetDialogFragment = MyBottomSheetDialogFragment()
             bottomSheetDialogFragment.show(supportFragmentManager, "bottomSheetDialogFragment")
         }
+
     }
 
 }
