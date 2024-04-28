@@ -32,12 +32,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-/*
-        ViewCompat.setOnApplyWindowInsetsListener(view.findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }*/
+
 
         val button4: Button = view.findViewById(R.id.filterRare4)
         button4.setOnClickListener {
@@ -71,13 +66,13 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
         }
         val typeOfDamageFire: Button = view.findViewById(R.id.typeOfDamageFire)
 
-        button5.setOnClickListener {
+        typeOfDamageFire.setOnClickListener {
             listener?.onButtonFourClicked("typeOfDamageFire")
             dismiss()
         }
         val typeOfDamageFiz: Button = view.findViewById(R.id.typeOfDamageFiz)
 
-        button5.setOnClickListener {
+        typeOfDamageFiz.setOnClickListener {
             listener?.onButtonFourClicked("typeOfDamageFiz")
             dismiss()
         }
