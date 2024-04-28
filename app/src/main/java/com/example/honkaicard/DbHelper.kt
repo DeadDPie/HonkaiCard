@@ -39,17 +39,7 @@ SQLiteOpenHelper(context, "app", factory, 5){
     onCreate(db)
     }
 
-    fun addPath(path:Path){
-        val values = ContentValues()
-        values.put("id", path.id)
-        values.put("name", path.name)
-        values.put("description", path.description)
 
-        val db = this.writableDatabase
-        db.insert("paths", null, values)
-
-        db.close()
-    }
     fun getPath(id:Int): String {
 
         val db = this.readableDatabase
@@ -86,9 +76,21 @@ SQLiteOpenHelper(context, "app", factory, 5){
         cursor.close()
         return path!!
 }
-    fun addItem(item: Item) {
-        val db = this.writableDatabase
+    fun addPath(path:Path){
         val values = ContentValues()
+        values.put("id", path.id)
+        values.put("name", path.name)
+        values.put("description", path.description)
+
+        val db = this.writableDatabase
+        db.insert("paths", null, values)
+
+        db.close()
+    }
+    fun addItem(item: Item) {
+
+        val values = ContentValues()
+        values.put("id", item.id)
         values.put("image", item.image)
         values.put("title", item.name)
         values.put("description", item.desc)
@@ -97,6 +99,7 @@ SQLiteOpenHelper(context, "app", factory, 5){
         values.put("relics", item.relics)
         values.put("typeOfDamage", item.typeOfDamage)
 
+        val db = this.writableDatabase
         db.insert("items", null, values)
         db.close()
     }

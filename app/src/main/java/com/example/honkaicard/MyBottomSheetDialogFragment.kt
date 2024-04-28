@@ -51,6 +51,37 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             dismiss()
         }
 
+        val buttonall: Button = view.findViewById(R.id.filterALL)
+
+        buttonall.setOnClickListener {
+            listener?.onButtonFourClicked("all")
+            dismiss()
+        }
+        val buttonfav: Button = view.findViewById(R.id.filterFav)
+
+        buttonfav.setOnClickListener {
+            listener?.onButtonFourClicked("fav")
+            dismiss()
+        }
+        val typeOfDamageElectro: Button = view.findViewById(R.id.typeOfDamageElectro)
+
+        typeOfDamageElectro.setOnClickListener {
+            listener?.onButtonFourClicked("typeOfDamageElectro")
+            dismiss()
+        }
+        val typeOfDamageFire: Button = view.findViewById(R.id.typeOfDamageFire)
+
+        button5.setOnClickListener {
+            listener?.onButtonFourClicked("typeOfDamageFire")
+            dismiss()
+        }
+        val typeOfDamageFiz: Button = view.findViewById(R.id.typeOfDamageFiz)
+
+        button5.setOnClickListener {
+            listener?.onButtonFourClicked("typeOfDamageFiz")
+            dismiss()
+        }
+
 /*
         button4.setOnClickListener {
             val intent = Intent(requireContext(), MainActivity2::class.java)

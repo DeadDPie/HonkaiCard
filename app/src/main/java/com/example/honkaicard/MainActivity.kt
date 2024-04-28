@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         val button: Button = findViewById(R.id.button)
         button.setOnClickListener{
 
-            val path = Path(5,"itsnewpath", "PathDesc")
+            val path = Path(23,"bqwb", "PatherDesc")
             val db = DbHelper(this, null)
             //db.del("app")
             db.addPath(path)
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
                     "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
                 "4",
                 2, "relics1", "dfdfg"))
-            //Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
 
 
         }
