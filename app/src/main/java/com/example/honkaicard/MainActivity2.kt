@@ -62,33 +62,33 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
                 "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
             "4",
-            pathAbundance.id, "relics1", typeOfDamageIce))
+            pathAbundance.id, "relics1", typeOfDamageIce, false))
         items.add(Item(2, "natasha", "Наташа","На лице придирчивого доктора всегда играет хитрая улыбка.\n" +
                 "В Подземье, где всегда не хватает медикаментов, Наташа — одна из немногих, к кому люди могут обратиться за помощью.",
-            "4", pathAbundance.id, "relics12", typeOfDamageFiz  ))
+            "4", pathAbundance.id, "relics12", typeOfDamageFiz , false ))
         items.add(Item(8, "sampo", "Сампо","Продажник с хорошо подвешенным языком. Если где-то можно на чём-то нажиться, вы точно найдёте там Сампо.\n" +
                 "Многие обращаются к нему за помощью, так как он владеет уникальными знаниями, но стать «клиентом» Сампо — не всегда хорошая идея.",
             "4",
-            pathNonexistence.id, "relics1", typeOfDamageIce))
+            pathNonexistence.id, "relics1", typeOfDamageIce, false))
         items.add(Item(4, "march", "Март 7","Энергичная и эксцентричная девушка, интересующаяся всем, что нравится девочкам её возраста, к примеру, фотографией.\n" +
                 "Её обнаружили в глыбе дрейфующего вечного льда, а после пробуждения оказалось, что она ничего не знает ни о себе, ни о своём прошлом.\n" +
                 "Поначалу сильно этим подавленная, она решила назвать себя в честь даты, с которой пошла её новая жизнь.\n" +
                 "И так появилась Март 7.",
-            "4", pathPreservation.id, "relics12", typeOfDamageIce ))
+            "4", pathPreservation.id, "relics12", typeOfDamageIce , false))
         items.add(Item(11, "chinlu", "Цзинлю","Легендарная героиня из Заоблачного квинтета, получившая прозвище Непостижимая Зарница.\n" +
                 "Отринув привычные людские представления об исходе битвы, она выбрала другой путь, чтобы обрести силу, способную уничтожать богов.",
-            "5", pathDestruction.id, "relics12", typeOfDamageIce ))
+            "5", pathDestruction.id, "relics12", typeOfDamageIce , false))
         items.add(Item(5, "blade", "Блэйд","Мечник, всецело отдавший себя клинку. Данное при рождении имя неизвестно.\n" +
                 "Он поклялся в верности Рабу Судьбы и обрёл невиданные способности к самоисцелению.\n" +
                 "Блэйд орудует старинным мечом, который покрыт трещинами точно так же, как тело и разум его владельца.",
-            "5", pathDestruction.id, "relics12", typeOfDamageWind ))
+            "5", pathDestruction.id, "relics12", typeOfDamageWind , false))
         items.add(Item(3, "yan", "Яньцин","Энергичный лейтенант Лофу Сяньчжоу, а также самый умелый из мечников.\n" +
                 "Он с рождения одержим мечами. Когда меч ложится в его в руку, никто не смеет недооценивать этого молодого гения.\n" +
                 "Пожалуй, лишь время способно притупить его драгоценный клинок..",
-            "5", pathHunt.id, "relics12", typeOfDamageIce ))
+            "5", pathHunt.id, "relics12", typeOfDamageIce, false ))
         items.add(Item(5, "avanturine", "Авантюрин","Топ-менеджер отдела стратегических инвестиций КММ и один из Десяти каменных сердец, известен своим основополагающим трудом «Авантюриновы стратагемы».\n" +
                 "Яркая личность. Живёт по принципу «кто не рискует, тот не пьёт шампанского». Скрывает свои истинные намерения за неизменной улыбкой.",
-            "5", pathPreservation.id, "relics12", typeOfDamageMnim ))
+            "5", pathPreservation.id, "relics12", typeOfDamageMnim , false))
         if (savedInstanceState != null) {
             buttonText = savedInstanceState.getString("buttonText").toString()
         }
@@ -99,6 +99,29 @@ if (buttonText == "4"){
         if (buttonText == "5"){
             items.removeIf { it.rare == "4" }
         }
+
+        if (buttonText == "typeOfDamageFiz"){
+            items.removeIf { it.typeOfDamage != typeOfDamageFiz }
+        }
+        if (buttonText == "typeOfDamageElectro"){
+            items.removeIf { it.typeOfDamage != typeOfDamageElectro }
+        }
+        if (buttonText == "typeOfDamageFire"){
+            items.removeIf { it.typeOfDamage != typeOfDamageFire }
+        }
+        if (buttonText == "typeOfDamageIce"){
+            items.removeIf { it.typeOfDamage != typeOfDamageIce }
+        }
+        if (buttonText == "typeOfDamageKvant"){
+            items.removeIf { it.typeOfDamage != typeOfDamageKvant }
+        }
+        if (buttonText == "typeOfDamageMnim"){
+            items.removeIf { it.typeOfDamage != typeOfDamageMnim }
+        }
+        if (buttonText == "typeOfDamageWind"){
+            items.removeIf { it.typeOfDamage != typeOfDamageWind }
+        }
+
 
         itemsList.layoutManager = LinearLayoutManager(this)
         itemsList.adapter = ItemsAdapter(items, this)

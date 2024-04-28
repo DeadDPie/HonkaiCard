@@ -20,6 +20,7 @@ SQLiteOpenHelper(context, "app", factory, 5){
                 "path_id INTEGER, " +
                 "relics TEXT, " +
                 "typeOfDamage TEXT, " +
+                "fav TEXT, "+
                 "FOREIGN KEY(path_id) REFERENCES paths(id))"
 
         // Проверяем, существует ли уже таблица items
@@ -98,6 +99,7 @@ SQLiteOpenHelper(context, "app", factory, 5){
         values.put("path_id", item.path)
         values.put("relics", item.relics)
         values.put("typeOfDamage", item.typeOfDamage)
+        values.put("fav", item.fav)
 
         val db = this.writableDatabase
         db.insert("items", null, values)
@@ -120,7 +122,7 @@ SQLiteOpenHelper(context, "app", factory, 5){
 
             val path = getPathById(pathId)
 
-            val char = Item(id, image, name, description, rare, pathId, relics, typeOfDamage)
+            val char = Item(id, image, name, description, rare, pathId, relics, typeOfDamage, false)
             chars.add(char)
         }
 

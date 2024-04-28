@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                     "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
                     "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
                 "4",
-                2, "relics1", "dfdfg"))
+                2, "relics1", "dfdfg", false))
             Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
 
 

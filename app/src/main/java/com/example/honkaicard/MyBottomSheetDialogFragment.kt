@@ -76,6 +76,31 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             listener?.onButtonFourClicked("typeOfDamageFiz")
             dismiss()
         }
+        val typeOfDamageIce: Button = view.findViewById(R.id.typeOfDamageIce)
+
+        typeOfDamageIce.setOnClickListener {
+            listener?.onButtonFourClicked("typeOfDamageIce")
+            dismiss()
+        }
+        val typeOfDamageKvant: Button = view.findViewById(R.id.typeOfDamageKvant)
+
+        typeOfDamageKvant.setOnClickListener {
+            listener?.onButtonFourClicked("typeOfDamageKvant")
+            dismiss()
+        }
+        val typeOfDamageMnim: Button = view.findViewById(R.id.typeOfDamageMnim)
+
+        typeOfDamageMnim.setOnClickListener {
+            listener?.onButtonFourClicked("typeOfDamageMnim")
+            dismiss()
+        }
+        val typeOfDamageWind: Button = view.findViewById(R.id.typeOfDamageWind)
+
+        typeOfDamageWind.setOnClickListener {
+            listener?.onButtonFourClicked("typeOfDamageWind")
+            dismiss()
+        }
+
 
 /*
         button4.setOnClickListener {
