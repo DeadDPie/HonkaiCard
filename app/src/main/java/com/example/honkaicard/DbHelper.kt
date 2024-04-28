@@ -31,11 +31,11 @@ SQLiteOpenHelper(context, "app", factory, 5){
         cursor.close()
 
     }
-//
+
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
     db!!.execSQL("DROP TABLE IF EXISTS paths")
         onCreate(db)
-    db!!.execSQL("DROP TABLE IF EXISTS items")
+    db.execSQL("DROP TABLE IF EXISTS items")
     onCreate(db)
     }
 
@@ -87,7 +87,7 @@ SQLiteOpenHelper(context, "app", factory, 5){
         return path!!
 }
     fun addItem(item: Item) {
-        val db = writableDatabase
+        val db = this.writableDatabase
         val values = ContentValues()
         values.put("image", item.image)
         values.put("title", item.name)

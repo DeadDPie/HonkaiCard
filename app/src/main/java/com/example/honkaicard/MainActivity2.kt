@@ -33,28 +33,19 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        //if (buttonText.isNotEmpty()) {
-            //Toast.makeText(this, "Нажата кнопка: $buttonText", Toast.LENGTH_SHORT).show()
-            // Другие действия с использованием buttonText...
-        //}
 
-
-        val path = Path(8,"Putii", "PathrtryDesc")
         val db = DbHelper(this, null)
-        db.addPath(path)
-        //Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
-        //val pith: Path = db.getPathById(3)!!
 
         val itemsList: RecyclerView = findViewById(R.id.itemsList)
         val items = arrayListOf<Item>()
 
-        val typeOfDamageFiz: String = "физический"
-        val typeOfDamageFire: String = "огненный"
-        val typeOfDamageIce: String = "ледяной"
-        val typeOfDamageElectro: String = "электрический"
-        val typeOfDamageWind: String = "ветряной"
-        val typeOfDamageKvant: String = "квантовый"
-        val typeOfDamageMnim: String = "мнимый"
+        val typeOfDamageFiz: String = "Физический"
+        val typeOfDamageFire: String = "Огненный"
+        val typeOfDamageIce: String = "Ледяной"
+        val typeOfDamageElectro: String = "Электрический"
+        val typeOfDamageWind: String = "Ветряной"
+        val typeOfDamageKvant: String = "Квантовый"
+        val typeOfDamageMnim: String = "Мнимый"
         //val path = Path("PathName", "PathDesc")
         val pathDestruction = Path(1, "Разрушение", "Персонажи этого Пути превосходно атакуют спереди. Они самые сильные, когда сражаются в одиночку в бою.")
         val pathHunt = Path(2, "Охота", "Персонажи этого Пути обладают экстраординарным уроном по одиночной цели, что критично в блиц-сражениях.")
@@ -72,9 +63,6 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
         db.addPath(pathHunt)
         db.addPath(pathDestruction)
 
-
-//widekit
-        //kit addItem
 
         db.addItem(Item(1, "gepard", "Гепард","Честный и благородный командующий Среброгривых Стражей носит имя уважаемой семьи Ландау.\n" +
                 "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
@@ -103,7 +91,9 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 "Он поклялся в верности Рабу Судьбы и обрёл невиданные способности к самоисцелению.\n" +
                 "Блэйд орудует старинным мечом, который покрыт трещинами точно так же, как тело и разум его владельца.",
             "5", pathDestruction.id, "relics12", typeOfDamageWind ))
-
+        db.addItem(Item(5, "avanturine", "Авантюрин","Топ-менеджер отдела стратегических инвестиций КММ и один из Десяти каменных сердец, известен своим основополагающим трудом «Авантюриновы стратагемы».\n" +
+                "Яркая личность. Живёт по принципу «кто не рискует, тот не пьёт шампанского». Скрывает свои истинные намерения за неизменной улыбкой.",
+            "5", pathPreservation.id, "relics12", typeOfDamageMnim ))
 
         val chars = db.getCharByRare("4").toMutableList()
         for (char in chars) {
@@ -139,7 +129,7 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 "Поначалу сильно этим подавленная, она решила назвать себя в честь даты, с которой пошла её новая жизнь.\n" +
                 "И так появилась Март 7.",
             "4", pathPreservation.id, "relics12", typeOfDamageIce ))
-        items.add(Item(5, "chinlu", "Цзинлю","Легендарная героиня из Заоблачного квинтета, получившая прозвище Непостижимая Зарница.\n" +
+        items.add(Item(11, "chinlu", "Цзинлю","Легендарная героиня из Заоблачного квинтета, получившая прозвище Непостижимая Зарница.\n" +
                 "Отринув привычные людские представления об исходе битвы, она выбрала другой путь, чтобы обрести силу, способную уничтожать богов.",
             "5", pathDestruction.id, "relics12", typeOfDamageIce ))
         items.add(Item(5, "blade", "Блэйд","Мечник, всецело отдавший себя клинку. Данное при рождении имя неизвестно.\n" +
@@ -182,7 +172,7 @@ if (buttonText == "4"){
 }
         if (buttonText == "5"){
             items.clear()
-            items.add(Item(5, "chinlu", "Цзинлю","Легендарная героиня из Заоблачного квинтета, получившая прозвище Непостижимая Зарница.\n" +
+            items.add(Item(11, "chinlu", "Цзинлю","Легендарная героиня из Заоблачного квинтета, получившая прозвище Непостижимая Зарница.\n" +
                     "Отринув привычные людские представления об исходе битвы, она выбрала другой путь, чтобы обрести силу, способную уничтожать богов.",
                 "5", pathDestruction.id, "relics12", typeOfDamageIce ))
             items.add(Item(5, "blade", "Блэйд","Мечник, всецело отдавший себя клинку. Данное при рождении имя неизвестно.\n" +

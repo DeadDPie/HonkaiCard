@@ -11,17 +11,93 @@
         android:text="Выберите фильтр"
         android:textSize="18sp" />
     <Button
-        android:id="@+id/filterRare4"
+        android:id="@+id/filterALL"
         android:layout_width="200dp"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:text="4" />
+        android:text="Все персонажи" />
     <Button
-        android:id="@+id/filterRare5"
+        android:id="@+id/filterFav"
         android:layout_width="200dp"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:text="5" />
+        android:text="Избранные персонажи" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="По редкости" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/filterRare4"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/filterRare5"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="5" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="По типу урона" />
+    <Button
+        android:id="@+id/typeOfDamageFiz"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Физический" />
+    <Button
+        android:id="@+id/typeOfDamageFire"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Огненный" />
+    <Button
+        android:id="@+id/typeOfDamageIce"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Ледяной" />
+    <Button
+        android:id="@+id/typeOfDamageElectro"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Электрический" />
+    <Button
+        android:id="@+id/typeOfDamageWind"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Ветряной" />
+    <Button
+        android:id="@+id/typeOfDamageKvant"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Квантовый" />
+    <Button
+        android:id="@+id/typeOfDamageMnim"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Мнимый" />
+
+
 
 
 

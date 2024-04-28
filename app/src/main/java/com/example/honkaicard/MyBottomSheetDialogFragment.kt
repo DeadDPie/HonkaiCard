@@ -25,9 +25,6 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             throw ClassCastException("$context must implement BottomSheetListener")
         }
     }
-    /*fun setOnButtonClickListener(listener: OnButtonClickListener) {
-        this.listener = listener
-    }*/
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
