@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Adapter<ItemsAdapter.MyViewHolder>() {
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view){
         val image: ImageView = view.findViewById(R.id.item_list_image)
+        val icon: ImageView = view.findViewById(R.id.imageViewHe)
         val name: TextView = view.findViewById(R.id.item_list_title)
         //val desc: TextView = view.findViewById(R.id.item_list_desc)
 
@@ -38,6 +39,29 @@ class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Ad
            "drawable",
             context.packageName)
         holder.image.setImageResource(imageId)
+
+        holder.icon.setOnClickListener {
+            // изменяем значение поля fav у текущего элемента списка
+            items[position].ffavor()
+
+            // обновляем состояние кнопки в зависимости от значения поля fav
+            if (items[position].ff) {
+                val iconId = context.resources.getIdentifier("h",
+                    "drawable",
+                    context.packageName)
+                holder.icon.setImageResource(iconId)
+            } else {
+                val iconId = context.resources.getIdentifier("he",
+                    "drawable",
+                    context.packageName)
+                holder.icon.setImageResource(iconId)
+            }
+        }
+
+            val iconId = context.resources.getIdentifier("he",
+            "drawable",
+            context.packageName)
+        holder.icon.setImageResource(iconId)
 
         holder.btn.setOnClickListener {
             val intent = Intent(context, ItemActivity::class.java)

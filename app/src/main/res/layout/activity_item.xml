@@ -13,12 +13,6 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="wrap_content">
-    <Button
-        android:id="@+id/button_fav"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="В избранное" />
 
     <ImageView
         android:id="@+id/imageChar"
