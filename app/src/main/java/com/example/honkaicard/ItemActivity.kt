@@ -1,5 +1,6 @@
 package com.example.honkaicard
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class ItemActivity : AppCompatActivity() {
+    private var listener: OnButtonClickListener? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,12 +27,16 @@ class ItemActivity : AppCompatActivity() {
         }
 
         val name: TextView = findViewById(R.id.charName)
-        //val text: TextView = findViewById(R.id.charRare)
         val rare: TextView = findViewById(R.id.charRare)
         val desc: TextView = findViewById(R.id.desc)
         val typeOfDamage: TextView = findViewById(R.id.charTypeOfDamage)
-       // val image: ImageView = findViewById(R.id.imageChar)
 
+        val itId = intent.getStringExtra("itemId")
+        val button4: Button = findViewById(R.id.buttonF)
+        button4.setOnClickListener {
+            listener?.onButtonFourClicked("Ffav$itId")
+
+        }
 // Получение ключа из Intent
        // val itemKey = intent.getStringExtra("itemKey")
 
@@ -48,6 +55,7 @@ class ItemActivity : AppCompatActivity() {
         val path: Path = db.getPathById(pathId)
 
 // intent.getStringExtra("Ppath") textp
+
 
         //pathText.text = intent.getStringExtra("Ppath")
         pathText.text = path.name

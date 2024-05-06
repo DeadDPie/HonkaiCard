@@ -20,19 +20,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val button: Button = findViewById(R.id.button)
-        button.setOnClickListener{
+        button.setOnClickListener {
 
-            val path = Path(23,"bqwb", "PatherDesc")
-            val db = DbHelper(this, null)
-            //db.del("app")
-            db.addPath(path)
-            db.addItem(Item(1, "gepard", "Гепард","Честный и благородный командующий Среброгривых Стражей носит имя уважаемой семьи Ландау.\n" +
-                    "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
-                    "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
-                "4",
-                2, "relics1", "dfdfg", false))
+            testAddItems()
             Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
-
 
         }
 
@@ -43,5 +34,30 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun testAddItems() {
+        val rnds = (0..50).random()
+        val db = DbHelper(this, null)
+
+        val path = Path(rnds, "Путь гея", "ГейгЕЙгейГЕЙ")
+        db.addPath(path)
+
+
+        //db.del("app")
+        val itemGepard = Item(
+            1,
+            "gepard",
+            "Гепард",
+            "Честный и благородный командующий Среброгривых Стражей носит имя уважаемой семьи Ландау.\n" +
+                    "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
+                    "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
+            "5",
+            2,
+            "relics1",
+            "dfdfg",
+            false
+        )
+        db.addItem(itemGepard)
     }
 }

@@ -1,15 +1,19 @@
 package com.example.honkaicard
+
 import android.content.ContentValues
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-class DbHelper (val context: Context, val factory:SQLiteDatabase.CursorFactory?):
-SQLiteOpenHelper(context, "app", factory, 5){
-    override fun onCreate(db: SQLiteDatabase?) {
-        val createPathsTableQuery  = "CREATE TABLE paths (id INT PRIMARY KEY, name TEXT, description TEXT)"
-        db!!.execSQL(createPathsTableQuery )
 
-// Создаем таблицу "items" для хранения персонажей
+class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?) :
+    SQLiteOpenHelper(context, "base.db", factory, 5) {
+    override fun onCreate(db: SQLiteDatabase?) {
+        val createPathsTableQuery =
+            "CREATE TABLE paths (id INT PRIMARY KEY, name TEXT, description TEXT)"
+        db!!.execSQL(createPathsTableQuery)
+        // initPaths
+
+        // Создаем  таблицу "items" для хранения персонажей
         val createItemsTableQuery = "CREATE TABLE items (" +
                 "id INTEGER PRIMARY KEY, " +
                 "image TEXT, " +
@@ -20,32 +24,32 @@ SQLiteOpenHelper(context, "app", factory, 5){
                 "path_id INTEGER, " +
                 "relics TEXT, " +
                 "typeOfDamage TEXT, " +
-                "fav TEXT, "+
-                "FOREIGN KEY(path_id) REFERENCES paths(id))"
+                "fav BOOLEAN )"
+//                "FOREIGN KEY(path_id) REFERENCES paths(id))"
 
         // Проверяем, существует ли уже таблица items
         val query = "SELECT DISTINCT tbl_name FROM sqlite_master WHERE tbl_name = 'items'"
         val cursor = db.rawQuery(query, null)
         if (cursor.count <= 0) {
-        db.execSQL(createItemsTableQuery)
+            db.execSQL(createItemsTableQuery)
         }
         cursor.close()
 
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-    db!!.execSQL("DROP TABLE IF EXISTS paths")
+        db!!.execSQL("DROP TABLE IF EXISTS paths")
         onCreate(db)
-    db.execSQL("DROP TABLE IF EXISTS items")
-    onCreate(db)
+        db.execSQL("DROP TABLE IF EXISTS items")
+        onCreate(db)
     }
 
 
-    fun getPath(id:Int): String {
+    fun getPath(id: Int): String {
 
         val db = this.readableDatabase
-/*
-        val result = db.rawQuery("SELECT paths.name FROM paths", null)*//*WHERE paths.id = 3*/
+        /*
+                val result = db.rawQuery("SELECT paths.name FROM paths", null)*//*WHERE paths.id = 3*/
 //return result.moveToFirst()WHERE paths.id = $Pid
         //val cursor = db.rawQuery("SELECT paths.name FROM paths  ", null)
         val cursor = db.rawQuery("SELECT name FROM paths WHERE id = ?", arrayOf(id.toString()))
@@ -61,6 +65,7 @@ SQLiteOpenHelper(context, "app", factory, 5){
         cursor.close()
         return result.last()
     }
+
     fun getPathById(id: Int): Path {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM paths WHERE id = ?", arrayOf(id.toString()))
@@ -76,8 +81,12 @@ SQLiteOpenHelper(context, "app", factory, 5){
 
         cursor.close()
         return path!!
-}
-    fun addPath(path:Path){
+    }
+    fun initPath(){
+
+    }
+
+    fun addPath(path: Path) { // initPaths
         val values = ContentValues()
         values.put("id", path.id)
         values.put("name", path.name)
@@ -88,12 +97,13 @@ SQLiteOpenHelper(context, "app", factory, 5){
 
         db.close()
     }
+
     fun addItem(item: Item) {
 
         val values = ContentValues()
         values.put("id", item.id)
         values.put("image", item.image)
-        values.put("title", item.name)
+        values.put("name", item.name)
         values.put("description", item.desc)
         values.put("rare", item.rare)
         values.put("path_id", item.path)

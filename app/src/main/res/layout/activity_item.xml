@@ -14,6 +14,12 @@
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
+    <Button
+        android:id="@+id/buttonF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
     <ImageView
         android:id="@+id/imageChar"
         android:layout_width="match_parent"
