@@ -11,7 +11,7 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         val createPathsTableQuery =
             "CREATE TABLE paths (id INT PRIMARY KEY, name TEXT, description TEXT)"
         db!!.execSQL(createPathsTableQuery)
-        // initPaths
+
 
         // Создаем  таблицу "items" для хранения персонажей
         val createItemsTableQuery = "CREATE TABLE items (" +
@@ -34,7 +34,6 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
             db.execSQL(createItemsTableQuery)
         }
         cursor.close()
-
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -82,44 +81,57 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         cursor.close()
         return path!!
     }
-    fun initPath(){
 
-    }
 
-    fun addPath(path: Path) { // initPaths
-        val values = ContentValues()
-        values.put("id", path.id)
-        values.put("name", path.name)
-        values.put("description", path.description)
+    fun initPaths() {
+        val paths = listOf(
+            Triple(
+                1,
+                "Разрушение",
+                "Персонажи этого Пути превосходно атакуют спереди. Они самые сильные, когда сражаются в одиночку в бою."
+            ),
+            Triple(
+                2,
+                "Охота",
+                "Персонажи этого Пути обладают экстраординарным уроном по одиночной цели, что критично в блиц-сражениях."
+            )
+        )
 
         val db = this.writableDatabase
-        db.insert("paths", null, values)
+        for (path in paths) {
+            val values = ContentValues()
+            values.put("id", path.first)
+            values.put("name", path.second)
+            values.put("description", path.third)
+            db.insert("paths", null, values)
+        }
+
 
         db.close()
     }
 
-    fun addItem(item: Item) {
+    fun addCharacter(character: Character) {
 
         val values = ContentValues()
-        values.put("id", item.id)
-        values.put("image", item.image)
-        values.put("name", item.name)
-        values.put("description", item.desc)
-        values.put("rare", item.rare)
-        values.put("path_id", item.path)
-        values.put("relics", item.relics)
-        values.put("typeOfDamage", item.typeOfDamage)
-        values.put("fav", item.fav)
+        values.put("id", character.id)
+        values.put("image", character.image)
+        values.put("name", character.name)
+        values.put("description", character.desc)
+        values.put("rare", character.rare)
+        values.put("path_id", character.path)
+        values.put("relics", character.relics)
+        values.put("typeOfDamage", character.typeOfDamage)
+        values.put("fav", character.fav)
 
         val db = this.writableDatabase
         db.insert("items", null, values)
         db.close()
     }
 
-    fun getCharByRare(rare: String): List<Item> {
+    fun getCharByRare(rare: String): List<Character> {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM items WHERE rare = ?", arrayOf(rare))
-        val chars = mutableListOf<Item>()
+        val chars = mutableListOf<Character>()
 
         while (cursor.moveToNext()) {
             val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
@@ -132,7 +144,7 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
 
             val path = getPathById(pathId)
 
-            val char = Item(id, image, name, description, rare, pathId, relics, typeOfDamage, false)
+            val char = Character(id, image, name, description, rare, pathId, relics, typeOfDamage, false)
             chars.add(char)
         }
 

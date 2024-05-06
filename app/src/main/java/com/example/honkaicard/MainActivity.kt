@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
 
             testAddItems()
+
             Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
 
         }
@@ -37,15 +38,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun testAddItems() {
+        println("Hellooooooooo!!!!!!!!!!!!!!!!!")
         val rnds = (0..50).random()
         val db = DbHelper(this, null)
-
-        val path = Path(rnds, "Путь гея", "ГейгЕЙгейГЕЙ")
-        db.addPath(path)
+        db.initPaths()
 
 
         //db.del("app")
-        val itemGepard = Item(
+        val itemGepard = Character(
             1,
             "gepard",
             "Гепард",
@@ -58,6 +58,6 @@ class MainActivity : AppCompatActivity() {
             "dfdfg",
             false
         )
-        db.addItem(itemGepard)
+        db.addCharacter(itemGepard)
     }
 }

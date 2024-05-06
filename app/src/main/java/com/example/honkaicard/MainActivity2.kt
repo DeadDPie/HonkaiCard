@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
     private var buttonText: String = ""
-    val items = arrayListOf<Item>()
+    val characters = arrayListOf<Character>()
 
     override fun onButtonFourClicked(text: String) {
         //recreate()
@@ -39,9 +39,9 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
 
         val db = DbHelper(this, null)
 
-        val itemsList: RecyclerView = findViewById(R.id.itemsList)
+        val charactersList: RecyclerView = findViewById(R.id.itemsList)
 
-        val itemsToShow = arrayListOf<Item>()
+        val itemsToShow = arrayListOf<Character>()
 
         val typeOfDamageFiz: String = "Физический"
         val typeOfDamageFire: String = "Огненный"
@@ -89,8 +89,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
 
 
 
-        db.addItem(
-            Item(
+        db.addCharacter(
+            Character(
                 2,
                 "gepard",
                 "Гепард",
@@ -105,8 +105,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
             )
         )
 
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 1,
                 "gepard",
                 "Гепард",
@@ -120,8 +120,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 2,
                 "natasha",
                 "Наташа",
@@ -134,8 +134,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 8,
                 "sampo",
                 "Сампо",
@@ -148,8 +148,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 4,
                 "march",
                 "Март 7",
@@ -164,8 +164,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 11,
                 "chinlu",
                 "Цзинлю",
@@ -178,8 +178,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 5,
                 "blade",
                 "Блэйд",
@@ -193,8 +193,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 3,
                 "yan",
                 "Яньцин",
@@ -208,8 +208,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 5,
                 "avanturine",
                 "Авантюрин",
@@ -222,8 +222,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 13,
                 "velt",
                 "Вельт",
@@ -237,8 +237,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 24,
                 "ratio",
                 "Доктор Рацио",
@@ -252,8 +252,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 14,
                 "zele",
                 "Зеле",
@@ -266,8 +266,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 15,
                 "kafka",
                 "Кафка",
@@ -281,8 +281,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 16,
                 "galher",
                 "Галлахер",
@@ -296,8 +296,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 16,
                 "arlan",
                 "Арлан",
@@ -311,8 +311,8 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                 false
             )
         )
-        items.add(
-            Item(
+        characters.add(
+            Character(
                 16,
                 "bailu",
                 "Байлу",
@@ -332,53 +332,53 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
             buttonText = savedInstanceState.getString("buttonText").toString()
         }
         if (buttonText == "4") {
-            items.removeIf { it.rare == "5" }
+            characters.removeIf { it.rare == "5" }
 
         }
         if (buttonText == "5") {
-            items.removeIf { it.rare == "4" }
-//            items.clear()
+            characters.removeIf { it.rare == "4" }
+//            characters.clear()
 //            //val chars = mutableListOf<Item>()
-//            items += db.getCharByRare("4")
+//            characters += db.getCharByRare("4")
         }
         if (buttonText == "typeOfDamageFiz") {
-            items.removeIf { it.typeOfDamage != typeOfDamageFiz }
+            characters.removeIf { it.typeOfDamage != typeOfDamageFiz }
         }
         if (buttonText == "typeOfDamageElectro") {
-            items.removeIf { it.typeOfDamage != typeOfDamageElectro }
+            characters.removeIf { it.typeOfDamage != typeOfDamageElectro }
         }
         if (buttonText == "typeOfDamageFire") {
-            items.removeIf { it.typeOfDamage != typeOfDamageFire }
+            characters.removeIf { it.typeOfDamage != typeOfDamageFire }
         }
         if (buttonText == "typeOfDamageIce") {
-            items.removeIf { it.typeOfDamage != typeOfDamageIce }
+            characters.removeIf { it.typeOfDamage != typeOfDamageIce }
         }
         if (buttonText == "typeOfDamageKvant") {
-            items.removeIf { it.typeOfDamage != typeOfDamageKvant }
+            characters.removeIf { it.typeOfDamage != typeOfDamageKvant }
         }
         if (buttonText == "typeOfDamageMnim") {
-            items.removeIf { it.typeOfDamage != typeOfDamageMnim }
+            characters.removeIf { it.typeOfDamage != typeOfDamageMnim }
         }
         if (buttonText == "typeOfDamageWind") {
-            items.removeIf { it.typeOfDamage != typeOfDamageWind }
+            characters.removeIf { it.typeOfDamage != typeOfDamageWind }
         }
 //        if (buttonText == "fav"){
-//            items.removeIf { !it.ff }
+//            characters.removeIf { !it.ff }
 //        }
 //        if (buttonText == "fav"){
-//            items.removeIf { !it.fav  }
+//            characters.removeIf { !it.fav  }
 //        }
         if (buttonText.startsWith("Ffav")) {
             val itemId = buttonText.substringAfter("Ffav")
-            val item = items.find { it.id == itemId.toInt() }
+            val item = characters.find { it.id == itemId.toInt() }
             item?.let {
                 it.fav = true
-                //itemsAdapter.notifyItemChanged(items.indexOf(it))
+                //charactersAdapter.notifyItemChanged(characters.indexOf(it))
             }
         }
 
-        itemsList.layoutManager = LinearLayoutManager(this)
-        itemsList.adapter = ItemsAdapter(items, this)
+        charactersList.layoutManager = LinearLayoutManager(this)
+        charactersList.adapter = ItemsAdapter(characters, this)
 
 
         val button: Button = findViewById(R.id.item_list_button)

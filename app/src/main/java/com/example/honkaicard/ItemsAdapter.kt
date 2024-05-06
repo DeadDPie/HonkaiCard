@@ -11,7 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemsAdapter(var items: List<Item>, var context: Context): RecyclerView.Adapter<ItemsAdapter.MyViewHolder>() {
+class ItemsAdapter(var items: List<Character>, var context: Context): RecyclerView.Adapter<ItemsAdapter.MyViewHolder>() {
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view){
         val image: ImageView = view.findViewById(R.id.item_list_image)
         val icon: ImageView = view.findViewById(R.id.imageViewHe)
