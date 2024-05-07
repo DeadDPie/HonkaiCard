@@ -32,13 +32,13 @@ class ItemActivity : AppCompatActivity() {
         val typeOfDamage: TextView = findViewById(R.id.charTypeOfDamage)
 
         val itId = intent.getStringExtra("itemId")
-        val button4: Button = findViewById(R.id.buttonF)
-        button4.setOnClickListener {
-            listener?.onButtonFourClicked("Ffav$itId")
-
-        }
+//        val button4: Button = findViewById(R.id.buttonF)
+//        button4.setOnClickListener {
+//            listener?.onButtonFourClicked("liked")
+//
+//        }
 // Получение ключа из Intent
-       // val itemKey = intent.getStringExtra("itemKey")
+        // val itemKey = intent.getStringExtra("itemKey")
 
         // Определение изображения на основе ключа
         //val imageView: ImageView = findViewById(R.id.imageChar)
@@ -65,7 +65,6 @@ class ItemActivity : AppCompatActivity() {
         typeOfDamage.text = intent.getStringExtra("itemTypeOfDamage")
 
 
-
         val itemsListPicturesHor: RecyclerView = findViewById(R.id.recyclerView)
         val items2 = arrayListOf<Relic>()
         items2.add(Relic(1, "relic", "title"))
@@ -75,7 +74,8 @@ class ItemActivity : AppCompatActivity() {
 
 
 // Устанавливаем менеджер компоновки для горизонтального расположения элементов
-        itemsListPicturesHor.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        itemsListPicturesHor.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
 // Создаем адаптер, передавая список идентификаторов ресурсов изображений
         itemsListPicturesHor.adapter = RecycleHorAdapter(items2, this)

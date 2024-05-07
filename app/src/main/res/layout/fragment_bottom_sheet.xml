@@ -55,43 +55,43 @@
         android:layout_gravity="center"
         android:text="По типу урона" />
     <Button
-        android:id="@+id/typeOfDamageFiz"
+        android:id="@+id/physicalDamage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Физический" />
     <Button
-        android:id="@+id/typeOfDamageFire"
+        android:id="@+id/fireDamage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Огненный" />
     <Button
-        android:id="@+id/typeOfDamageIce"
+        android:id="@+id/iceDamage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Ледяной" />
     <Button
-        android:id="@+id/typeOfDamageElectro"
+        android:id="@+id/lightningDamage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Электрический" />
     <Button
-        android:id="@+id/typeOfDamageWind"
+        android:id="@+id/windDamage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Ветряной" />
     <Button
-        android:id="@+id/typeOfDamageKvant"
+        android:id="@+id/quantumDamage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Квантовый" />
     <Button
-        android:id="@+id/typeOfDamageMnim"
+        android:id="@+id/imaginaryDamage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

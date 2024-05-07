@@ -46,19 +46,19 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
         )
         holder.image.setImageResource(imageId)
 
-        val chers = listOf(sampo, natasha)
+
 
         // обновляем состояние кнопки в зависимости от значения поля fav
 
 
         holder.icon.setOnClickListener {
             Log.d("MyTag", items[position].id.toString())
-            for (cher in chers) {
-                if (items[position].id == cher.id) {
-                    cher.fav = !cher.fav
-                    items[position].fav = cher.fav
+            for (temp in characters) {
+                if (items[position].id == temp.id) {
+                    temp.fav = !temp.fav
+                    items[position].fav = temp.fav
                     notifyItemChanged(position)
-                    Log.d("MyTag", cher.fav.toString())
+                    Log.d("MyTag", temp.fav.toString())
                     Log.d("MyTag", items[position].fav.toString())
                 }
             }

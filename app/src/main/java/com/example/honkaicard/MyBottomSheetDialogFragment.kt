@@ -55,49 +55,49 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
         val buttonfav: Button = view.findViewById(R.id.filterFav)
 
         buttonfav.setOnClickListener {
-            listener?.onButtonFourClicked("fav")
+            listener?.onButtonFourClicked("liked")
             dismiss()
         }
-        val typeOfDamageElectro: Button = view.findViewById(R.id.typeOfDamageElectro)
+        val lightningDamage: Button = view.findViewById(R.id.lightningDamage)
 
-        typeOfDamageElectro.setOnClickListener {
-            listener?.onButtonFourClicked("typeOfDamageElectro")
+        lightningDamage.setOnClickListener {
+            listener?.onButtonFourClicked("lightningDamage")
             dismiss()
         }
-        val typeOfDamageFire: Button = view.findViewById(R.id.typeOfDamageFire)
+        val fireDamage: Button = view.findViewById(R.id.fireDamage)
 
-        typeOfDamageFire.setOnClickListener {
-            listener?.onButtonFourClicked("typeOfDamageFire")
+        fireDamage.setOnClickListener {
+            listener?.onButtonFourClicked("fireDamage")
             dismiss()
         }
-        val typeOfDamageFiz: Button = view.findViewById(R.id.typeOfDamageFiz)
+        val physicalDamage: Button = view.findViewById(R.id.physicalDamage)
 
-        typeOfDamageFiz.setOnClickListener {
-            listener?.onButtonFourClicked("typeOfDamageFiz")
+        physicalDamage.setOnClickListener {
+            listener?.onButtonFourClicked("physicalDamage")
             dismiss()
         }
-        val typeOfDamageIce: Button = view.findViewById(R.id.typeOfDamageIce)
+        val iceDamage: Button = view.findViewById(R.id.iceDamage)
 
-        typeOfDamageIce.setOnClickListener {
-            listener?.onButtonFourClicked("typeOfDamageIce")
+        iceDamage.setOnClickListener {
+            listener?.onButtonFourClicked("iceDamage")
             dismiss()
         }
-        val typeOfDamageKvant: Button = view.findViewById(R.id.typeOfDamageKvant)
+        val quantumDamage: Button = view.findViewById(R.id.quantumDamage)
 
-        typeOfDamageKvant.setOnClickListener {
-            listener?.onButtonFourClicked("typeOfDamageKvant")
+        quantumDamage.setOnClickListener {
+            listener?.onButtonFourClicked("quantumDamage")
             dismiss()
         }
-        val typeOfDamageMnim: Button = view.findViewById(R.id.typeOfDamageMnim)
+        val imaginaryDamage: Button = view.findViewById(R.id.imaginaryDamage)
 
-        typeOfDamageMnim.setOnClickListener {
-            listener?.onButtonFourClicked("typeOfDamageMnim")
+        imaginaryDamage.setOnClickListener {
+            listener?.onButtonFourClicked("imaginaryDamage")
             dismiss()
         }
-        val typeOfDamageWind: Button = view.findViewById(R.id.typeOfDamageWind)
+        val windDamage: Button = view.findViewById(R.id.windDamage)
 
-        typeOfDamageWind.setOnClickListener {
-            listener?.onButtonFourClicked("typeOfDamageWind")
+        windDamage.setOnClickListener {
+            listener?.onButtonFourClicked("windDamage")
             dismiss()
         }
 
