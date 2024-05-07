@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import com.example.honkaicard.Path
 
 class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, "base.db", factory, 5) {
@@ -84,25 +85,13 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
 
 
     fun initPaths() {
-        val paths = listOf(
-            Triple(
-                1,
-                "Разрушение",
-                "Персонажи этого Пути превосходно атакуют спереди. Они самые сильные, когда сражаются в одиночку в бою."
-            ),
-            Triple(
-                2,
-                "Охота",
-                "Персонажи этого Пути обладают экстраординарным уроном по одиночной цели, что критично в блиц-сражениях."
-            )
-        )
-
+        val paths = listOf(destruction, hunt, erudition, harmony, nihility, preservation, abundance)
         val db = this.writableDatabase
         for (path in paths) {
             val values = ContentValues()
-            values.put("id", path.first)
-            values.put("name", path.second)
-            values.put("description", path.third)
+            values.put("id", path.id)
+            values.put("name", path.name)
+            values.put("description", path.description)
             db.insert("paths", null, values)
         }
 
@@ -144,7 +133,8 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
 
             val path = getPathById(pathId)
 
-            val char = Character(id, image, name, description, rare, pathId, relics, typeOfDamage, false)
+            val char =
+                Character(id, image, name, description, rare, pathId, relics, typeOfDamage, false)
             chars.add(char)
         }
 

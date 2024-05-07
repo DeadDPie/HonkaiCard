@@ -2,6 +2,7 @@ package com.example.honkaicard
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -37,8 +38,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     private fun testAddItems() {
-        println("Hellooooooooo!!!!!!!!!!!!!!!!!")
+        Log.d("MyTag", "Hellooooooooo!!!!!!!!!!!!!!!!!")
         val rnds = (0..50).random()
         val db = DbHelper(this, null)
         db.initPaths()
