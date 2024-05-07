@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.example.honkaicard.Path
 
 class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, "base.db", factory, 5) {
@@ -80,7 +79,8 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         }
 
         cursor.close()
-        return path!!
+        return path ?: destruction
+
     }
 
 
@@ -88,14 +88,26 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         val paths = listOf(destruction, hunt, erudition, harmony, nihility, preservation, abundance)
         val db = this.writableDatabase
         for (path in paths) {
-            val values = ContentValues()
-            values.put("id", path.id)
-            values.put("name", path.name)
-            values.put("description", path.description)
-            db.insert("paths", null, values)
+            // проверяем, существуют ли данные с тем же id
+            val cursor = db.query(
+                "paths",
+                arrayOf("id"),
+                "id = ?",
+                arrayOf(path.id.toString()),
+                null,
+                null,
+                null
+            )
+            if (cursor.count == 0) {
+                // если данных нет, добавляем их
+                val values = ContentValues()
+                values.put("id", path.id)
+                values.put("name", path.name)
+                values.put("description", path.description)
+                db.insert("paths", null, values)
+            }
+            cursor.close()
         }
-
-
         db.close()
     }
 

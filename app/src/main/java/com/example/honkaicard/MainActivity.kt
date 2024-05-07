@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun testAddItems() {
         Log.d("MyTag", "Hellooooooooo!!!!!!!!!!!!!!!!!")
-        val rnds = (0..50).random()
         val db = DbHelper(this, null)
         db.initPaths()
 

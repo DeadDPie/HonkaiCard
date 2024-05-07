@@ -50,7 +50,7 @@ class ItemActivity : AppCompatActivity() {
 
         val db = DbHelper(this, null)
         val pathText: TextView = findViewById(R.id.charPath)
-        val textp = db.getPath(8)
+        //val textp = db.getPath(8)
         val pathId: Int = intent.getIntExtra("Ppath", 3)
         val path: Path = db.getPathById(pathId)
 

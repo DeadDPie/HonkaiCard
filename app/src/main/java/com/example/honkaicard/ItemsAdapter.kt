@@ -2,6 +2,7 @@ package com.example.honkaicard
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,7 +73,7 @@ var f = false
             //val db = DbHelper(this, null)
 
             //intent.putExtra("itemImage", items[position].image)
-
+            Log.d("MyTag", items[position].path.toString())
             // Передача уникального ключа вместо имени файла изображения
             //intent.putExtra("itemKey", items[position].id)
             //intent.putExtra("imageResourceId", R.drawable.)

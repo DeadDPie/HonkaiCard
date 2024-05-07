@@ -38,7 +38,7 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
         }
 
         val db = DbHelper(this, null)
-
+        db.initPaths()
         val charactersList: RecyclerView = findViewById(R.id.itemsList)
 
         val itemsToShow = arrayListOf<Character>()
@@ -82,7 +82,7 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
             "Персонажи этого Пути обладают мощными защитными способностями, которые могут защитить союзников разными способами."
         )
         val pathAbundance = Path(
-            8,
+            6,
             "Изобилие",
             "Персонажи пути Изобилия выполняют роль лекарей в группе и могут исцелить как себя, так и всю команду."
         )
@@ -98,7 +98,7 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
                         "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
                         "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
                 "4",
-                2,
+                preservation.id,
                 "relics1",
                 "dfdfg",
                 false
@@ -336,10 +336,10 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
 
         }
         if (buttonText == "5") {
-            characters.removeIf { it.rare == "4" }
-//            characters.clear()
+            //characters.removeIf { it.rare == "4" }
+            characters.clear()
 //            //val chars = mutableListOf<Item>()
-//            characters += db.getCharByRare("4")
+            characters += db.getCharByRare("4")
         }
         if (buttonText == "typeOfDamageFiz") {
             characters.removeIf { it.typeOfDamage != typeOfDamageFiz }
