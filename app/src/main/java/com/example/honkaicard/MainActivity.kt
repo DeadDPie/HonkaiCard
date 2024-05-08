@@ -21,44 +21,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val button: Button = findViewById(R.id.button)
-        button.setOnClickListener {
-
-            testAddItems()
-
-            Toast.makeText(this, "Path was added", Toast.LENGTH_SHORT).show()
-
-        }
-
         val button_go: Button = findViewById(R.id.button_go)
         button_go.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }
 
-
     }
 
-
-    private fun testAddItems() {
-        Log.d("MyTag", "Hellooooooooo!!!!!!!!!!!!!!!!!")
-        val db = DbHelper(this, null)
-        db.initPaths()
-
-
-        //db.del("app")
-//        val itemGepard = Character(
-//            1,
-//            "gepard",
-//            "Гепард",
-//            "Честный и благородный командующий Среброгривых Стражей носит имя уважаемой семьи Ландау.\n" +
-//                    "В скованном льдом Белобоге жизнь идёт своим чередом...\n" +
-//                    "И всё это благодаря стараниям Гепарда и его Стражей, что охраняют мир в городе.",
-//            "5",
-//            2,
-//            "relics1",
-//            "dfdfg",
-//            false
-//        )
-//        db.addCharacter(itemGepard)
-    }
 }

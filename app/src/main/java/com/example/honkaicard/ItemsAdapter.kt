@@ -18,8 +18,6 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
         val image: ImageView = view.findViewById(R.id.item_list_image)
         val icon: ImageView = view.findViewById(R.id.imageViewHe)
         val name: TextView = view.findViewById(R.id.item_list_title)
-
-        //val desc: TextView = view.findViewById(R.id.item_list_desc)
         val btn: Button = view.findViewById(R.id.item_list_button)
 
     }
@@ -36,7 +34,6 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.name.text = items[position].name
         var itemId = items[position].id
-        //holder.desc.text = items[position].desc
 
 
         val imageId = context.resources.getIdentifier(
@@ -47,19 +44,15 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
         holder.image.setImageResource(imageId)
 
 
-        // обновляем состояние кнопки в зависимости от значения поля fav
 
+        // обновляем состояние кнопки в зависимости от значения поля fav
         items[position].fav = DbHelper(context, null).getLike(items[position].id)
 
         holder.icon.setOnClickListener {
-//            Log.d("MyTag", "items[position].id." + items[position].id.toString())
 
             DbHelper(context, null).setLike(items[position].id)
-            // items[position].fav = DbHelper(context, null).getLike(items[position].id)
             notifyItemChanged(position)
 
-//            Log.d("MyTag-ItemsAdapter", "items[position].fav is " + items[position].fav.toString())
-//            Log.d("MyTag", "items[position].fav in listener " + items[position].fav.toString())
 
         }
 
@@ -71,7 +64,7 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
             )
             holder.icon.setImageResource(iconId)
 
-            //items[position].fav = false
+
         } else {
             val iconId = context.resources.getIdentifier(
                 "he",
@@ -79,28 +72,14 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
                 context.packageName
             )
             holder.icon.setImageResource(iconId)
-//                    items[position].fav = true
         }
 
 
-//            val iconId = context.resources.getIdentifier("he",
-//            "drawable",
-//            context.packageName)
-//        holder.icon.setImageResource(iconId)
 
         holder.btn.setOnClickListener {
             val intent = Intent(context, ItemActivity::class.java)
-            //val db = DbHelper(this, null)
-
-            //intent.putExtra("itemImage", items[position].image)
-            //Log.d("MyTag", items[position].path.toString())
-            // Передача уникального ключа вместо имени файла изображения
-            //intent.putExtra("itemKey", items[position].id)
-            //intent.putExtra("imageResourceId", R.drawable.)
             intent.putExtra("imageId", imageId)
-            //intent.putExtra("Ppath", items[position].path.name)
             intent.putExtra("Ppath", items[position].path)
-            //DbHelper.getP
             intent.putExtra("itemId", items[position].id)
             Log.d("MyItemAdapter", "items[position].id $items[position].id")
             intent.putExtra("itemTitle", items[position].name)
@@ -108,7 +87,6 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
             intent.putExtra("itemTypeOfDamage", items[position].typeOfDamage)
             intent.putExtra("itemRare", items[position].rare)
             intent.putExtra("itemDesc", items[position].desc)
-
 
             context.startActivity(intent)
         }

@@ -5,9 +5,32 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log
+import java.io.FileOutputStream
 
-class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?) :
-    SQLiteOpenHelper(context, "base.db", factory, 5) {
+class DbHelper(private val context: Context, val factory: SQLiteDatabase.CursorFactory?) :
+    SQLiteOpenHelper(context, "base.db", null, 5) {
+
+    init {
+        if (!checkDatabase()) {
+            copyDatabaseFromAssets()
+        }
+    }
+
+    private fun checkDatabase(): Boolean {
+        return context.getDatabasePath("base.db").exists()
+    }
+
+    private fun copyDatabaseFromAssets() {
+        val inputStream = context.assets.open("predisigned_base.db")
+        val outputStream = FileOutputStream(context.getDatabasePath("base.db"))
+
+        inputStream.use { input ->
+            outputStream.use { output ->
+                input.copyTo(output)
+            }
+        }
+    }
+
     override fun onCreate(db: SQLiteDatabase?) {
         val createPathsTableQuery =
             "CREATE TABLE paths (id INT PRIMARY KEY, name TEXT, description TEXT)"
@@ -213,34 +236,5 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
 
         cursor.close()
         db.close()
-
-//        val db = this.readableDatabase //UPDATE items SET fav=? WHERE id = ?
-//        val cursor = db.rawQuery("SELECT * FROM items WHERE id = ?", arrayOf(id.toString()))
-//        val newLike = if (currentLike) 0 else 1
-//
-//        cursor.close()
-//        Log.d("MyTag", "проверка")
-//        val cursor2 = db.rawQuery("SELECT * FROM items WHERE id = ?", arrayOf(id.toString()))
-//        val temp = cursor2.getColumnIndexOrThrow("fav")
-//        val fav = cursor2.getInt(temp)
-//        Log.d("MyTag", "fav $fav")
-//        cursor2.close()
     }
 }
-/*val cursor = db.rawQuery("SELECT * FROM items WHERE id = ?", arrayOf(id.toString()))
-        Log.d("MyTag", "clicked char id $id")
-        cursor.moveToFirst()
-        val currentLike = cursor.getInt(0) == 1
-        Log.d("MyTag", "currentLike $currentLike")
-        cursor.close()
-
-        // Меняем значение fav на противоположное
-        val newLike = if (currentLike) 0 else 1
-        Log.d("MyTag", "newLike $newLike")
-        // Обновляем значение fav в базе данных
-        val values = ContentValues().apply {
-            put("fav", newLike)
-        }
-        db.update("items", values, "id = ?", arrayOf(id.toString()))
-
-        cursor.close()*/
