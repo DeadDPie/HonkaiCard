@@ -9,9 +9,9 @@ class Character(
     val path: Int,
     val relics: String,
     val typeOfDamage: String,
-    var fav: Boolean
+    var fav: Int
 ) {
-//    var ff: Boolean = false
+//    var ff: Boolean = 0
 //    fun ffavor(){
 //        ff = !ff
 //    }
@@ -41,7 +41,7 @@ var sampo =
         nihility.id,
         "relics1",
         windDamage,
-        false
+        0
     )
 
 
@@ -57,7 +57,7 @@ var gepard =
         preservation.id,
         "relics1",
         iceDamage,
-        false
+        0
     )
 
 var natasha =
@@ -71,7 +71,7 @@ var natasha =
         abundance.id,
         "relics12",
         physicalDamage,
-        false
+        0
     )
 
 
@@ -87,7 +87,7 @@ var march = Character(
     preservation.id,
     "relics12",
     iceDamage,
-    false
+    0
 )
 
 
@@ -101,7 +101,7 @@ var chinlu = Character(
     destruction.id,
     "relics12",
     iceDamage,
-    false
+    0
 )
 
 
@@ -116,7 +116,7 @@ var blade = Character(
     destruction.id,
     "relics12",
     windDamage,
-    false
+    0
 )
 
 
@@ -131,7 +131,7 @@ var yan = Character(
     hunt.id,
     "relics12",
     iceDamage,
-    false
+    0
 )
 
 
@@ -145,7 +145,7 @@ var avanturine = Character(
     preservation.id,
     "relics12",
     imaginaryDamage,
-    false
+    0
 )
 
 
@@ -160,7 +160,7 @@ var velt = Character(
     nihility.id,
     "relics12",
     imaginaryDamage,
-    false
+    0
 )
 
 
@@ -175,7 +175,7 @@ var ratio = Character(
     hunt.id,
     "relics12",
     imaginaryDamage,
-    false
+    0
 )
 
 
@@ -189,7 +189,7 @@ var zele = Character(
     hunt.id,
     "relics12",
     quantumDamage,
-    false
+    0
 )
 
 
@@ -204,7 +204,7 @@ var kafka = Character(
     nihility.id,
     "relics12",
     lightningDamage,
-    false
+    0
 )
 
 
@@ -219,7 +219,7 @@ var galher = Character(
     abundance.id,
     "relics12",
     fireDamage,
-    false
+    0
 
 )
 
@@ -234,7 +234,7 @@ var arlan = Character(
     destruction.id,
     "relics12",
     lightningDamage,
-    false
+    0
 
 )
 
@@ -250,7 +250,7 @@ var bailu = Character(
     abundance.id,
     "relics12",
     lightningDamage,
-    false
+    0
 )
 
 

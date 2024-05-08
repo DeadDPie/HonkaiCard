@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log
 
 class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, "base.db", factory, 5) {
@@ -24,7 +25,7 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
                 "path_id INTEGER, " +
                 "relics TEXT, " +
                 "typeOfDamage TEXT, " +
-                "fav BOOLEAN )"
+                "fav INTEGER )"
 //                "FOREIGN KEY(path_id) REFERENCES paths(id))"
 
         // Проверяем, существует ли уже таблица items
@@ -147,7 +148,7 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
             val path = getPathById(pathId)
 
             val char =
-                Character(id, image, name, description, rare, pathId, relics, typeOfDamage, false)
+                Character(id, image, name, description, rare, pathId, relics, typeOfDamage, 0)
             chars.add(char)
         }
 
@@ -171,12 +172,75 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
             val typeOfDamage = cursor.getString(cursor.getColumnIndexOrThrow("typeOfDamage"))
 
             val character =
-                Character(id, image, name, description, rare, pathId, relics, typeOfDamage, false)
+                Character(id, image, name, description, rare, pathId, relics, typeOfDamage, 0)
             all_characters.add(character)
         }
 
         cursor.close()
         return all_characters
     }
-}
 
+    fun getLike(id: Int): Int {
+        val db = this.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM items WHERE id = ?", arrayOf(id.toString()))
+        Log.d("MyTag", "clicked char id $id")
+        var currentLike: Int = 0
+        if (cursor.moveToFirst()) {
+            currentLike = cursor.getInt(cursor.getColumnIndexOrThrow("fav"))
+            Log.d("MyTag", "currentLike $currentLike")
+
+        }
+        return currentLike
+    }
+
+    fun setLike(id: Int) {
+        val db = this.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM items WHERE id = ?", arrayOf(id.toString()))
+        Log.d("MyTag", "clicked char id $id")
+
+        if (cursor.moveToFirst()) {
+            val currentLike = cursor.getInt(cursor.getColumnIndexOrThrow("fav"))
+            Log.d("MyTag", "currentLike $currentLike")
+            val newLike = if (currentLike == 0) 1 else 0 // Инвертируем значение fav
+            Log.d("MyTag", "newLike $newLike")
+
+            val contentValues = ContentValues().apply {
+                put("fav", newLike)
+            }
+
+            db.update("items", contentValues, "id = ?", arrayOf(id.toString()))
+        }
+
+        cursor.close()
+        db.close()
+
+//        val db = this.readableDatabase //UPDATE items SET fav=? WHERE id = ?
+//        val cursor = db.rawQuery("SELECT * FROM items WHERE id = ?", arrayOf(id.toString()))
+//        val newLike = if (currentLike) 0 else 1
+//
+//        cursor.close()
+//        Log.d("MyTag", "проверка")
+//        val cursor2 = db.rawQuery("SELECT * FROM items WHERE id = ?", arrayOf(id.toString()))
+//        val temp = cursor2.getColumnIndexOrThrow("fav")
+//        val fav = cursor2.getInt(temp)
+//        Log.d("MyTag", "fav $fav")
+//        cursor2.close()
+    }
+}
+/*val cursor = db.rawQuery("SELECT * FROM items WHERE id = ?", arrayOf(id.toString()))
+        Log.d("MyTag", "clicked char id $id")
+        cursor.moveToFirst()
+        val currentLike = cursor.getInt(0) == 1
+        Log.d("MyTag", "currentLike $currentLike")
+        cursor.close()
+
+        // Меняем значение fav на противоположное
+        val newLike = if (currentLike) 0 else 1
+        Log.d("MyTag", "newLike $newLike")
+        // Обновляем значение fav в базе данных
+        val values = ContentValues().apply {
+            put("fav", newLike)
+        }
+        db.update("items", values, "id = ?", arrayOf(id.toString()))
+
+        cursor.close()*/

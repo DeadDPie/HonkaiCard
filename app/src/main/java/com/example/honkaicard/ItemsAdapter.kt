@@ -47,23 +47,23 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
         holder.image.setImageResource(imageId)
 
 
-
         // обновляем состояние кнопки в зависимости от значения поля fav
 
+        items[position].fav = DbHelper(context, null).getLike(items[position].id)
 
         holder.icon.setOnClickListener {
-            Log.d("MyTag", items[position].id.toString())
-            for (temp in characters) {
-                if (items[position].id == temp.id) {
-                    temp.fav = !temp.fav
-                    items[position].fav = temp.fav
-                    notifyItemChanged(position)
-                    Log.d("MyTag", temp.fav.toString())
-                    Log.d("MyTag", items[position].fav.toString())
-                }
-            }
+//            Log.d("MyTag", "items[position].id." + items[position].id.toString())
+
+            DbHelper(context, null).setLike(items[position].id)
+            // items[position].fav = DbHelper(context, null).getLike(items[position].id)
+            notifyItemChanged(position)
+
+//            Log.d("MyTag-ItemsAdapter", "items[position].fav is " + items[position].fav.toString())
+//            Log.d("MyTag", "items[position].fav in listener " + items[position].fav.toString())
+
         }
-        if (items[position].fav) {
+
+        if (items[position].fav == 1) {
             val iconId = context.resources.getIdentifier(
                 "h",
                 "drawable",
@@ -102,6 +102,7 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
             intent.putExtra("Ppath", items[position].path)
             //DbHelper.getP
             intent.putExtra("itemId", items[position].id)
+            Log.d("MyItemAdapter", "items[position].id $items[position].id")
             intent.putExtra("itemTitle", items[position].name)
             intent.putExtra("itemRelics", items[position].relics)
             intent.putExtra("itemTypeOfDamage", items[position].typeOfDamage)
