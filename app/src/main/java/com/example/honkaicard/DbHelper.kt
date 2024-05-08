@@ -111,6 +111,7 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         db.close()
     }
 
+
     fun addCharacter(character: Character) {
 
         val values = ContentValues()
@@ -154,6 +155,28 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         return chars
     }
 
+    fun getAllCharacters(): List<Character> {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM items ", null)
+        val all_characters = mutableListOf<Character>()
 
+        while (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+            val image = cursor.getString(cursor.getColumnIndexOrThrow("image"))
+            val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+            val description = cursor.getString(cursor.getColumnIndexOrThrow("description"))
+            val rare = cursor.getString(cursor.getColumnIndexOrThrow("rare"))
+            val pathId = cursor.getInt(cursor.getColumnIndexOrThrow("path_id"))
+            val relics = cursor.getString(cursor.getColumnIndexOrThrow("relics"))
+            val typeOfDamage = cursor.getString(cursor.getColumnIndexOrThrow("typeOfDamage"))
+
+            val character =
+                Character(id, image, name, description, rare, pathId, relics, typeOfDamage, false)
+            all_characters.add(character)
+        }
+
+        cursor.close()
+        return all_characters
+    }
 }
 

@@ -36,13 +36,43 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        charactersFiltered += characters
+        //charactersFiltered += characters
         val db = DbHelper(this, null)
         db.initPaths()
         val charactersList: RecyclerView = findViewById(R.id.itemsList)
 
-        val itemsToShow = arrayListOf<Character>()
+        db.addCharacter(Character(
+            15,
+            "bailu",
+            "Байлу",
+            "Жизнерадостная девушка видьядхарского происхождения, прозванная Целительницей-драконом за свой богатый опыт в медицине.\n" +
+                    "Часто выписывает нестандартные назначения, например, «пейте больше воды» или «как следует высыпайтесь».\n" +
+                    "Байлу тяжело смотреть на страдания других, поэтому она лечит пациентов крепко зажмурив глаза.\n" +
+                    "«Главное — чтобы все были здоровы, верно?»",
+            "5",
+            abundance.id,
+            "relics12",
+            lightningDamage,
+            false
+        ))
+        db.addCharacter(Character(
+            14,
+            "arlan",
+            "Арлан",
+            "Немногословный глава Отдела безопасности космической станции «Герта».\n" +
+                    "Арлан ничего не понимает в научных исследованиях, но готов пожертвовать своей жизнью ради защиты сотрудников станции, для которых эти исследования значат очень многое. Он не боится боли и носит шрамы с достоинством.\n" +
+                    "Только вместе с Пеппи парень может позволить себе расслабиться и улыбнуться.",
+            "4",
+            destruction.id,
+            "relics12",
+            lightningDamage,
+            false
 
+        )
+        )
+        val itemsToShow = arrayListOf<Character>()
+        val charactersToShow = db.getAllCharacters()
+        charactersFiltered += charactersToShow
 
 
         if (savedInstanceState != null) {
@@ -79,7 +109,7 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
         if (buttonText == "windDamage") {
             charactersFiltered.removeIf { it.typeOfDamage != windDamage }
         }
-        if (buttonText == "liked"){
+        if (buttonText == "liked") {
             charactersFiltered.removeIf { !it.fav }
         }
 //        if (buttonText == "fav"){
