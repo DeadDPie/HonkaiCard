@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
-    private var listener: OnButtonClickListener? = null
+    var listener: OnButtonClickListener? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

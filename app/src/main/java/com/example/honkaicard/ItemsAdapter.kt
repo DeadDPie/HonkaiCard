@@ -33,7 +33,7 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.name.text = items[position].name
-        var itemId = items[position].id
+       // var itemId = items[position].id
 
 
         val imageId = context.resources.getIdentifier(

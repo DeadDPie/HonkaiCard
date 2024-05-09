@@ -12,9 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
 
-    private var buttonText: String = ""
+    var buttonText: String = ""
 
+fun plus(a:Int,b:Int): Int {
+    return a+b
 
+}
     override fun onButtonFourClicked(text: String) {
         buttonText = text
         recreate()
@@ -25,7 +28,7 @@ class MainActivity2 : AppCompatActivity(), OnButtonClickListener {
         outState.putString("buttonText", buttonText)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main2)

@@ -43,9 +43,7 @@ class ItemActivity : AppCompatActivity() {
         val path: Path = db.getPathById(pathId)
 
         Log.d("MyTag", "itId $itId")
-        if (itId != null) {
-            liked.text = db.getLike(itId.toInt()).toString()
-        }
+        liked.text = db.getLike(itId.toInt()).toString()
 
         pathText.text = path.name
         name.text = intent.getStringExtra("itemTitle")
