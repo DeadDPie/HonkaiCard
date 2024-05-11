@@ -58,7 +58,7 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
 
         if (items[position].fav == 1) {
             val iconId = context.resources.getIdentifier(
-                "h",
+                "heart",
                 "drawable",
                 context.packageName
             )
@@ -67,7 +67,7 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
 
         } else {
             val iconId = context.resources.getIdentifier(
-                "he",
+                "heart_empty",
                 "drawable",
                 context.packageName
             )

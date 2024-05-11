@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -28,10 +30,10 @@ class ItemActivity : AppCompatActivity() {
         }
 
         val name: TextView = findViewById(R.id.charName)
-        val rare: TextView = findViewById(R.id.charRare)
+        //val rare: TextView = findViewById(R.id.charRare)
         val desc: TextView = findViewById(R.id.desc)
         val typeOfDamage: TextView = findViewById(R.id.charTypeOfDamage)
-        val liked: TextView = findViewById(R.id.textViewLiked)
+        //val liked: TextView = findViewById(R.id.textViewLiked)
         val imageView: ImageView = findViewById(R.id.imageChar)
         val imageId = intent.getIntExtra("imageId", 0)
         imageView.setImageResource(imageId)
@@ -41,28 +43,95 @@ class ItemActivity : AppCompatActivity() {
         val pathId: Int = intent.getIntExtra("Ppath", 3)
         val itId = intent.getIntExtra("itemId", 3)
         val path: Path = db.getPathById(pathId)
+        val imagePath: ImageView = findViewById(R.id.imagePath)
 
+        if (pathId == 1) {
+            val iconId = resources.getIdentifier(
+                "destruction",
+                "drawable",
+                packageName
+            )
+            imagePath.setImageResource(iconId)
+        }
+        if (pathId == 2) {
+            val iconId = resources.getIdentifier(
+                "hunt",
+                "drawable",
+                packageName
+            )
+            imagePath.setImageResource(iconId)
+        }
+        if (pathId == 3) {
+            val iconId = resources.getIdentifier(
+                "erudition",
+                "drawable",
+                packageName
+            )
+            imagePath.setImageResource(iconId)
+        }
+        if (pathId == 4) {
+            val iconId = resources.getIdentifier(
+                "harmony",
+                "drawable",
+                packageName
+            )
+            imagePath.setImageResource(iconId)
+        }
+        if (pathId == 5) {
+            val iconId = resources.getIdentifier(
+                "nihility",
+                "drawable",
+                packageName
+            )
+            imagePath.setImageResource(iconId)
+        }
+        if (pathId == 6) {
+            val iconId = resources.getIdentifier(
+                "preservation",
+                "drawable",
+                packageName
+            )
+            imagePath.setImageResource(iconId)
+        }
+        if (pathId == 7) {
+            val iconId = resources.getIdentifier(
+                "abudance",
+                "drawable",
+                packageName
+            )
+            imagePath.setImageResource(iconId)
+        }
+
+        imagePath.setOnClickListener{
+            val pathObj = db.getPathById(pathId)
+            showInfoAlert(pathObj.description)
+
+        }
         Log.d("MyTag", "itId $itId")
-        liked.text = db.getLike(itId.toInt()).toString()
+        //liked.text = db.getLike(itId.toInt()).toString()
 
         pathText.text = path.name
         name.text = intent.getStringExtra("itemTitle")
-        rare.text = intent.getStringExtra("itemRare")
+        val rareValue  = intent.getStringExtra("itemRare")
+        if (rareValue == "4") {
+            val imageView5: ImageView = findViewById(R.id.imageStar5)
+            imageView5.visibility = View.INVISIBLE
+        }
         desc.text = intent.getStringExtra("itemDesc")
         typeOfDamage.text = intent.getStringExtra("itemTypeOfDamage")
 
 
-        val itemsListPicturesHor: RecyclerView = findViewById(R.id.recyclerView)
-        val items2 = arrayListOf<Relic>()
-        items2.add(Relic(1, "relic", "title"))
-        items2.add(Relic(1, "relic", "title"))
-        items2.add(Relic(1, "relic", "title"))
-        items2.add(Relic(1, "relic", "title"))
-
-
-        itemsListPicturesHor.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        itemsListPicturesHor.adapter = RecycleHorAdapter(items2, this)
-
     }
+    private fun showInfoAlert(text: String) {
+        val builder = AlertDialog.Builder(this@ItemActivity)
+        builder.setTitle("Описание пути")
+            .setMessage(text)
+            .setCancelable(false)
+            .setNegativeButton("Закрыть окно") { dialogInterface, _ ->
+                dialogInterface.cancel()
+            }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
 }

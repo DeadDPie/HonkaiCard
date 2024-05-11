@@ -21,70 +21,107 @@
         android:layout_height="550dp"
         app:srcCompat="@drawable/kit" />
 
-    <TextView
-        android:id="@+id/textViewLiked"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        >
 
+        <ImageView
+            android:id="@+id/imageStar1"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/star" />
+        <ImageView
+            android:id="@+id/imageStar2"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/star" />
+        <ImageView
+            android:id="@+id/imageStar3"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/star" />
+        <ImageView
+            android:id="@+id/imageStar4"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/star" />
+        <ImageView
+            android:id="@+id/imageStar5"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
+            app:srcCompat="@drawable/star" />
+
+    </LinearLayout>
     <TextView
         android:id="@+id/charName"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="30sp"
         android:text="Имя" />
 
-    <TextView
-        android:id="@+id/charRare"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
 
-        android:text="Рейтинг" />
+
 
     <TextView
         android:id="@+id/charTypeOgDamageTitle"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="22sp"
         android:text="Стихия" />
 
     <TextView
         android:id="@+id/charTypeOfDamage"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
         android:text="Вид стихии" />
 
     <TextView
         android:id="@+id/TitlePath"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="22sp"
         android:text="Путь" />
+
+    <ImageView
+        android:id="@+id/imagePath"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        app:srcCompat="@drawable/abudance" />
 
     <TextView
         android:id="@+id/charPath"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
         android:text="Название пути" />
 
     <TextView
         android:id="@+id/textView5"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="30sp"
         android:text="Описание" />
@@ -95,24 +132,20 @@
         android:paddingVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="16sp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/textView8"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="30sp"
         android:text="Оружие" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 </LinearLayout>
 </ScrollView >
