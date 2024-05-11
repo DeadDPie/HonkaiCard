@@ -118,10 +118,101 @@ class ItemActivity : AppCompatActivity() {
             imageView5.visibility = View.INVISIBLE
         }
         desc.text = intent.getStringExtra("itemDesc")
-        typeOfDamage.text = intent.getStringExtra("itemTypeOfDamage")
+        val TypeOfDamage = intent.getStringExtra("itemTypeOfDamage")
+        typeOfDamage.text = TypeOfDamage
 
-
+        val imageTypeOfDamage:ImageView = findViewById(R.id.imageTypeOgDamage)
+        if (TypeOfDamage == "Электрический") {
+            val iconId = resources.getIdentifier(
+                "electro",
+                "drawable",
+                packageName
+            )
+            imageTypeOfDamage.setImageResource(iconId)
+        }
+        if (TypeOfDamage == "Огненный") {
+            val iconId = resources.getIdentifier(
+                "fire",
+                "drawable",
+                packageName
+            )
+            imageTypeOfDamage.setImageResource(iconId)
+        }
+        if (TypeOfDamage == "Физический") {
+            val iconId = resources.getIdentifier(
+                "fiz",
+                "drawable",
+                packageName
+            )
+            imageTypeOfDamage.setImageResource(iconId)
+        }
+        if (TypeOfDamage == "Ледяной") {
+            val iconId = resources.getIdentifier(
+                "ice",
+                "drawable",
+                packageName
+            )
+            imageTypeOfDamage.setImageResource(iconId)
+        }
+        if (TypeOfDamage == "Квантовый") {
+            val iconId = resources.getIdentifier(
+                "kvant",
+                "drawable",
+                packageName
+            )
+            imageTypeOfDamage.setImageResource(iconId)
+        }
+        if (TypeOfDamage == "Мнимый") {
+            val iconId = resources.getIdentifier(
+                "mnim",
+                "drawable",
+                packageName
+            )
+            imageTypeOfDamage.setImageResource(iconId)
+        }
+        val relicId = intent.getStringExtra("itemRelics")!!.toInt()
+        val relic: Relic? = db.getRelicById(relicId)
+        val textRelic: TextView = findViewById(R.id.textRelic)
+        if (relic != null) {
+            textRelic.text = relic.name
+        }
+        val imageRelic: ImageView = findViewById(R.id.imageRelic)
+        if (relic != null) {
+            if (relic.id == 1) {
+                val iconId = resources.getIdentifier(
+                    relic.image,
+                    "drawable",
+                    packageName
+                )
+                imageRelic.setImageResource(iconId)
+            }
+            if (relic.id == 2) {
+                val iconId = resources.getIdentifier(
+                    relic.image,
+                    "drawable",
+                    packageName
+                )
+                imageRelic.setImageResource(iconId)
+            }
+            if (relic.id == 3) {
+                val iconId = resources.getIdentifier(
+                    relic.image,
+                    "drawable",
+                    packageName
+                )
+                imageRelic.setImageResource(iconId)
+            }
+            if (relic.id == 4) {
+                val iconId = resources.getIdentifier(
+                    relic.image,
+                    "drawable",
+                    packageName
+                )
+                imageRelic.setImageResource(iconId)
+            }
+        }
     }
+
     private fun showInfoAlert(text: String) {
         val builder = AlertDialog.Builder(this@ItemActivity)
         builder.setTitle("Описание пути")

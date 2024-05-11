@@ -72,12 +72,19 @@
     <TextView
         android:id="@+id/charTypeOgDamageTitle"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="22sp"
         android:text="Стихия" />
+
+    <ImageView
+        android:id="@+id/imageTypeOgDamage"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        app:srcCompat="@drawable/fire" />
 
     <TextView
         android:id="@+id/charTypeOfDamage"
@@ -92,7 +99,8 @@
     <TextView
         android:id="@+id/TitlePath"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -118,7 +126,8 @@
     <TextView
         android:id="@+id/textView5"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -138,13 +147,29 @@
     <TextView
         android:id="@+id/textView8"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="30sp"
-        android:text="Оружие" />
+        android:text="Реликвия" />
+
+    <ImageView
+        android:id="@+id/imageRelic"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        app:srcCompat="@drawable/abudance" />
+
+    <TextView
+        android:id="@+id/textRelic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:paddingBottom="25dp"
+        android:text="TextView" />
 
 
 </LinearLayout>

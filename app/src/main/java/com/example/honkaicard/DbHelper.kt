@@ -106,7 +106,23 @@ class DbHelper(private val context: Context, val factory: SQLiteDatabase.CursorF
         return path ?: destruction
 
     }
+    fun getRelicById(id: Int): Relic? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM relics WHERE id = ?", arrayOf(id.toString()))
+        var relic: Relic? = null
 
+        if (cursor.moveToFirst()) {
+            val relicId = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+            val image = cursor.getString(cursor.getColumnIndexOrThrow("image"))
+            val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+
+            relic = Relic(relicId, image, name)
+        }
+
+        cursor.close()
+        return relic
+
+    }
 
     fun initPaths() {
         val paths = listOf(destruction, hunt, erudition, harmony, nihility, preservation, abundance)
