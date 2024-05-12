@@ -1,6 +1,9 @@
 package com.example.honkaicard
 
-class Path(val id: Int, val name: String, val description: String) {
+class Path(val id: Int, override val name: String, val description: String) : Name {
+    override fun getItemName(): String {
+        return this.name
+    }
 }
 
 val destruction = Path(

@@ -3,14 +3,18 @@ package com.example.honkaicard
 class Character(
     val id: Int,
     val image: String,
-    val name: String,
+    override val name: String,
     val desc: String,
     val rare: String,
     val path: Int,
     val relics: String,
     val typeOfDamage: String,
     var fav: Int
-)
+) : Name {
+    override fun getItemName(): String {
+        return this.name
+    }
+}
 
 const val physicalDamage: String = "Физический"
 const val fireDamage: String = "Огненный"
