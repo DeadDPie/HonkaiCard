@@ -178,38 +178,12 @@ class ItemActivity : AppCompatActivity() {
         }
         val imageRelic: ImageView = findViewById(R.id.imageRelic)
         if (relic != null) {
-            if (relic.id == 1) {
                 val iconId = resources.getIdentifier(
                     relic.image,
                     "drawable",
                     packageName
                 )
                 imageRelic.setImageResource(iconId)
-            }
-            if (relic.id == 2) {
-                val iconId = resources.getIdentifier(
-                    relic.image,
-                    "drawable",
-                    packageName
-                )
-                imageRelic.setImageResource(iconId)
-            }
-            if (relic.id == 3) {
-                val iconId = resources.getIdentifier(
-                    relic.image,
-                    "drawable",
-                    packageName
-                )
-                imageRelic.setImageResource(iconId)
-            }
-            if (relic.id == 4) {
-                val iconId = resources.getIdentifier(
-                    relic.image,
-                    "drawable",
-                    packageName
-                )
-                imageRelic.setImageResource(iconId)
-            }
         }
     }
 
