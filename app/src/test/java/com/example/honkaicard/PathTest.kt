@@ -21,5 +21,14 @@ class PathTest {
     fun getDescription() {
         val path = Path(1, "name", "description")
         assertEquals("description", path.description)
+        hunt
+        destruction
+        hunt
+        erudition
+         harmony
+         nihility
+         preservation
+         abundance
+        this.getName()
     }
 }

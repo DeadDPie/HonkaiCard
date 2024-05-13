@@ -44,7 +44,6 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
         holder.image.setImageResource(imageId)
 
 
-
         // обновляем состояние кнопки в зависимости от значения поля fav
         items[position].fav = DbHelper(context, null).getLike(items[position].id)
 
@@ -55,7 +54,6 @@ class ItemsAdapter(var items: List<Character>, var context: Context) :
 
 
         }
-
         if (items[position].fav == 1) {
             val iconId = context.resources.getIdentifier(
                 "heart",

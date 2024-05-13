@@ -113,9 +113,9 @@
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
-                  <entry key="Duration" value="90" />
-                  <entry key="Tests" value="360" />
-                  <entry key="samsung SM-A720F" value="120" />
+                  <entry key="Duration" value="225" />
+                  <entry key="Tests" value="494" />
+                  <entry key="samsung SM-A720F" value="254" />
                 </map>
               </option>
             </AndroidTestResultsTableState>

@@ -3,8 +3,30 @@ import com.android.build.api.dsl.Packaging
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    jacoco
+    id("org.jetbrains.kotlinx.kover") version "0.7.5"
     // use JUnit5 for tests
     //id("de.mannodermaus.android-junit5") version "1.10.0.0"
+}
+koverReport {
+    filters {
+        excludes {
+            classes("com.baeldung.code.not.covered")
+        }
+    }
+
+    verify {
+        rule {
+            isEnabled = true
+            bound {
+                //minValue = 80 // Minimum coverage percentage
+            }
+        }
+    }
+}
+jacoco {
+    toolVersion = "0.8.11"
+    reportsDirectory = layout.buildDirectory.dir("customJacocoReportDir")
 }
 
 android {
@@ -40,6 +62,11 @@ android {
                 "proguard-rules.pro"
             )
             isDebuggable = true
+
+        }
+        debug {
+            enableUnitTestCoverage = true
+            enableAndroidTestCoverage = true
         }
     }
     compileOptions {
